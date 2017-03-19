@@ -21,11 +21,12 @@ darkblue = {red=24/255,blue=195/255,green=145/255,alpha=1}
 
 if hs.fs.currentDir() == nil then
     privateconf = hs.fs.pathToAbsolute('~/.hammerspoon/private/awesomeconfig.lua')
+else
+    if privatepath == nil then
+        hs.fs.mkdir(hs.fs.currentDir()..'/private')
+    end
+    privateconf = hs.fs.pathToAbsolute(hs.fs.currentDir()..'/private/awesomeconfig.lua')
 end
---if privatepath == nil then
---    hs.fs.mkdir(hs.fs.currentDir()..'/private')
---end
---privateconf = hs.fs.pathToAbsolute(hs.fs.currentDir()..'/private/awesomeconfig.lua')
 if privateconf ~= nil then
     require('private/awesomeconfig')
 end
@@ -220,5 +221,11 @@ end
 for i=1,#module_list do
     require(module_list[i])
 end
+
+local weather = require("hs-weather")
+weather.start()
+
+local caff = require("modes.caffeinator")
+caff.start()
 
 if #modal_list > 0 then require("modalmgr") end

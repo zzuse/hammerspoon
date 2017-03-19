@@ -1,5 +1,7 @@
 # Cloned from Awesome-hammerspoon, as advertised.
 # Just add private dir and modify some errors
+# ADDED caffeinate
+# ADDED weather from https://github.com/skamsie/hs-weather.git
 
 ![modes](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-modes.png)
 
