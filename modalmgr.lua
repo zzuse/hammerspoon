@@ -81,6 +81,10 @@ showtime_keys = showtime_keys or {"alt", "T"}
 if string.len(showtime_keys[2]) > 0 then
     modalmgr:bind(showtime_keys[1], showtime_keys[2], 'Show Digital Clock', function() show_time() end)
 end
+text_keys = text_keys or {{"ctrl","shift"}, "E"}
+if string.len(text_keys[2]) > 0 then
+   modalmgr:bind(text_keys[1], text_keys[2], 'Send Text EXIT', function() SendExitTextRequest() end)
+end
 if viewM then
     viewM_keys = viewM_keys or {"alt", "V"}
     if string.len(viewM_keys[2]) > 0 then
