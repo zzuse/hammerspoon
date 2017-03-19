@@ -85,6 +85,14 @@ text_keys = text_keys or {{"ctrl","shift"}, "E"}
 if string.len(text_keys[2]) > 0 then
    modalmgr:bind(text_keys[1], text_keys[2], 'Send Text EXIT', function() SendExitTextRequest() end)
 end
+nohidden_keys = nohidden_keys or {{"ctrl","shift"}, "N"}
+if string.len(nohidden_keys[2]) > 0 then
+   modalmgr:bind(nohidden_keys[1], nohidden_keys[2], 'no hidden desktop', function() NoHiddenDesktop() end)
+end
+hidden_keys = hidden_keys or {{"ctrl","shift"}, "H"}
+if string.len(hidden_keys[2]) > 0 then
+   modalmgr:bind(hidden_keys[1], hidden_keys[2], 'hidden desktop', function() HiddenDesktop() end)
+end
 if viewM then
     viewM_keys = viewM_keys or {"alt", "V"}
     if string.len(viewM_keys[2]) > 0 then

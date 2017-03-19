@@ -189,6 +189,13 @@ function SendExitTextRequest()
     local stat, data= hs.osascript.applescript('on run {}\n tell application "Terminal"\n activate\n do script ("exit") in window 0\n end tell\n return input\n end run\n ')
 end
 
+function HiddenDesktop()
+    local stat, data= hs.osascript.applescript('on run {}\n tell application "Finder"\n activate\n do shell script "chflags hidden ~/Desktop/*"\n end tell\n return input\n end run\n')
+end
+function NoHiddenDesktop()
+    local stat, data= hs.osascript.applescript('on run {}\n tell application "Finder"\n activate\n do shell script "chflags nohidden ~/Desktop/*"\n end tell\n return input\n end run\n')
+end
+
 resizeextra_lefthalf_keys = resizeextra_lefthalf_keys or {{"cmd", "alt"}, "left"}
 if string.len(resizeextra_lefthalf_keys[2]) > 0 then
     hs.hotkey.bind(resizeextra_lefthalf_keys[1], resizeextra_lefthalf_keys[2], "Lefthalf of Screen", function() resize_win('halfleft') end)
