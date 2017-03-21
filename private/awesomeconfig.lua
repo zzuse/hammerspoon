@@ -2,12 +2,14 @@ applist = {
     {shortcut = 'c',appname = 'Calculator'},
     {shortcut = 'm',appname = 'MacVim'},
     {shortcut = 'q',appname = 'QQ'},
+    {shortcut = 'w',appname = 'WeChat'},
 }
 module_list = {
     "basicmode",
     "widgets/netspeed",
     "widgets/hcalendar",
     "modes/clipshow",
+    "modes/cheatsheet",
 }
 modalmgr_keys = {{"alt"}, "F"}
 resizeM_keys = {{}, ""}
