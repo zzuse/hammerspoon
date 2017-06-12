@@ -1,8 +1,18 @@
 applist = {
+    {shortcut = 'a',appname = 'Airmail 3'},
+    {shortcut = 'b',appname = 'Beyond Compare'},
     {shortcut = 'c',appname = 'Calculator'},
-    {shortcut = 'm',appname = 'MacVim'},
+    {shortcut = 'd',appname = 'Downie'},
+    {shortcut = 'e',appname = 'Evernote'},
+    {shortcut = 'f',appname = 'FileZilla'},
+    {shortcut = 'm',appname = 'QQMusic'},
+    {shortcut = 'n',appname = 'Notability'},
+    {shortcut = 'o',appname = 'SQLDeveloper'},
     {shortcut = 'q',appname = 'QQ'},
+    {shortcut = 'r',appname = 'CodeRunner'},
+    {shortcut = 't',appname = 'Terminal'},
     {shortcut = 'w',appname = 'WeChat'},
+    {shortcut = 'x',appname = 'Xcode'},
 }
 module_list = {
     "basicmode",
