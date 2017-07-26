@@ -5,6 +5,8 @@ applist = {
     {shortcut = 'd',appname = 'Downie'},
     {shortcut = 'e',appname = 'Evernote'},
     {shortcut = 'f',appname = 'FileZilla'},
+    {shortcut = 'g',appname = 'NeteaseMusic'},
+    {shortcut = 'k',appname = 'Klib'},
     {shortcut = 'm',appname = 'QQMusic'},
     {shortcut = 'n',appname = 'Notability'},
     {shortcut = 'o',appname = 'SQLDeveloper'},
