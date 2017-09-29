@@ -9,7 +9,7 @@ applist = {
     {shortcut = 'k',appname = 'Klib'},
     {shortcut = 'm',appname = 'QQMusic'},
     {shortcut = 'n',appname = 'Notability'},
-    {shortcut = 'o',appname = 'SQLDeveloper'},
+    {shortcut = 'o',appname = 'SourceTree'},
     {shortcut = 'q',appname = 'QQ'},
     {shortcut = 'r',appname = 'CodeRunner'},
     {shortcut = 's',appname = 'Safari'},
