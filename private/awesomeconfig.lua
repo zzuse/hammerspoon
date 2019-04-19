@@ -16,6 +16,7 @@ applist = {
     {shortcut = 'r',appname = 'CodeRunner'},
     {shortcut = 's',appname = 'Safari'},
     {shortcut = 't',appname = 'Terminal'},
+    {shortcut = 'v',appname = 'Visual Studio Code'},
     {shortcut = 'w',appname = 'WeChat'},
     {shortcut = 'x',appname = 'Xcode'},
 }
