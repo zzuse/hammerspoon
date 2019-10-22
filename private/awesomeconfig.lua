@@ -23,7 +23,6 @@ applist = {
 module_list = {
     "basicmode",
     "widgets/netspeed",
-    "widgets/hcalendar",
     "modes/clipshow",
     "modes/cheatsheet",
 }

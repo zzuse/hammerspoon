@@ -233,10 +233,12 @@ for i=1,#module_list do
     require(module_list[i])
 end
 
-local weather = require("hs-weather")
-weather.start()
+-- local weather = require("hs-weather")
+-- weather.start()
 
 local caff = require("modes.caffeinator")
 caff.start()
 
 if #modal_list > 0 then require("modalmgr") end
+
+hs.loadSpoon("HCalendar")
