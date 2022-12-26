@@ -8,6 +8,7 @@ function viewM:entered()
         hotkeybg:delete()
         hotkeybg=nil
     end
+    showavailableHotkey()
 end
 function viewM:exited()
     if dock_launched then
@@ -76,6 +77,7 @@ function resizeM:entered()
         hotkeybg:delete()
         hotkeybg=nil
     end
+    showavailableHotkey()
 end
 function resizeM:exited()
     if dock_launched then
@@ -100,7 +102,7 @@ resizeM:bind('', 'Q', function() resizeM:exit() end)
 resizeM:bind('', 'tab', function() showavailableHotkey() end)
 resizeM:bind('shift', 'Y', 'Shrink Leftward', function() resize_win('left') end, nil, function() resize_win('left') end)
 resizeM:bind('shift', 'O', 'Stretch Rightward', function() resize_win('right') end, nil, function() resize_win('right') end)
-resizeM:bind('shift', 'U', 'Stretch Downward', function() resize_win('down') end, nil, function() resize_win('down') end)
+resizeM:bind('shift', 'M', 'Stretch Downward', function() resize_win('down') end, nil, function() resize_win('down') end)
 resizeM:bind('shift', 'I', 'Shrink Upward', function() resize_win('up') end, nil, function() resize_win('up') end)
 resizeM:bind('', 'F', 'Fullscreen', function() resize_win('fullscreen') end, nil, nil)
 resizeM:bind('', 'C', 'Center Window', function() resize_win('center') end, nil, nil)
@@ -110,8 +112,8 @@ resizeM:bind('', 'J', 'Downhalf of Screen', function() resize_win('halfdown') en
 resizeM:bind('', 'K', 'Uphalf of Screen', function() resize_win('halfup') end, nil, nil)
 resizeM:bind('', 'L', 'Righthalf of Screen', function() resize_win('halfright') end, nil, nil)
 resizeM:bind('', 'Y', 'NorthWest Corner', function() resize_win('cornerNW') end, nil, nil)
-resizeM:bind('', 'U', 'SouthWest Corner', function() resize_win('cornerSW') end, nil, nil)
-resizeM:bind('', 'I', 'SouthEast Corner', function() resize_win('cornerSE') end, nil, nil)
+resizeM:bind('', 'N', 'SouthWest Corner', function() resize_win('cornerSW') end, nil, nil)
+resizeM:bind('', 'M', 'SouthEast Corner', function() resize_win('cornerSE') end, nil, nil)
 resizeM:bind('', 'O', 'NorthEast Corner', function() resize_win('cornerNE') end, nil, nil)
 resizeM:bind('', '=', 'Stretch Outward', function() resize_win('expand') end, nil, function() resize_win('expand') end)
 resizeM:bind('', '-', 'Shrink Inward', function() resize_win('shrink') end, nil, function() resize_win('shrink') end)

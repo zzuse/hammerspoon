@@ -31,16 +31,7 @@ if privateconf ~= nil then
     require('private/awesomeconfig')
 end
 
-hsreload_keys = hsreload_keys or {{"cmd", "shift", "ctrl"}, "R"}
-if string.len(hsreload_keys[2]) > 0 then
-    hs.hotkey.bind(hsreload_keys[1], hsreload_keys[2], "Reload Configuration", function() hs.reload() end)
-end
-
-lockscreen_keys = lockscreen_keys or {{"cmd", "shift", "ctrl"}, "L"}
-if string.len(lockscreen_keys[2]) > 0 then
-    hs.hotkey.bind(lockscreen_keys[1], lockscreen_keys[2],"Lock Screen", function() hs.caffeinate.lockScreen() end)
-end
-
+-- deprecated function show_time
 function show_time()
     if not time_draw then
         local mainScreen = hs.screen.mainScreen()
@@ -57,6 +48,7 @@ function show_time()
     end
 end
 
+-- TODO hotkey_filtered[i-1].idx length calculation is not beautiful
 function showavailableHotkey()
     if not hotkeytext then
         local hotkey_list=hs.hotkey.getHotkeys()
@@ -80,7 +72,7 @@ function showavailableHotkey()
                 table.insert(hotkey_filtered,hotkey_list[i])
             end
         end
-        local availablelen = 70
+        local availablelen = 100
         local hkstr = ''
         for i=2,#hotkey_filtered,2 do
             local tmpstr = hotkey_filtered[i-1].msg .. hotkey_filtered[i].msg
@@ -110,8 +102,8 @@ function modal_stat(modal, color)
     if not modal_show then
         local mainScreen = hs.screen.mainScreen()
         local mainRes = mainScreen:fullFrame()
-        local modal_bg_rect = hs.geometry.rect(mainRes.w-170,mainRes.h-24,170,19)
-        local modal_text_rect = hs.geometry.rect(mainRes.w-170,mainRes.h-24,170,19)
+        local modal_bg_rect = hs.geometry.rect(mainRes.w-170,mainRes.h-50,170,40)
+        local modal_text_rect = hs.geometry.rect(mainRes.w-170,mainRes.h-50,170,40)
         modal_bg = hs.drawing.rectangle(modal_bg_rect)
         modal_bg:setStroke(false)
         modal_bg:setFillColor(black)
@@ -130,13 +122,7 @@ function modal_stat(modal, color)
     modal_show:setText(modal_text)
 end
 
-function exit_others(except)
-    for i = 1, #modal_list do
-        if modal_list[i] ~= except then
-            modal_list[i]:exit()
-        end
-    end
-end
+
 
 function move_win(direction)
     local win = hs.window.focusedWindow()
@@ -196,36 +182,10 @@ function NoHiddenDesktop()
     local stat, data= hs.osascript.applescript('on run {}\n tell application "Finder"\n activate\n do shell script "chflags nohidden ~/Desktop/*"\n end tell\n return input\n end run\n')
 end
 
-resizeextra_lefthalf_keys = resizeextra_lefthalf_keys or {{"cmd", "alt"}, "left"}
-if string.len(resizeextra_lefthalf_keys[2]) > 0 then
-    hs.hotkey.bind(resizeextra_lefthalf_keys[1], resizeextra_lefthalf_keys[2], "Lefthalf of Screen", function() resize_win('halfleft') end)
-end
-resizeextra_righthalf_keys = resizeextra_righthalf_keys or {{"cmd", "alt"}, "right"}
-if string.len(resizeextra_righthalf_keys[2]) > 0 then
-    hs.hotkey.bind(resizeextra_righthalf_keys[1], resizeextra_righthalf_keys[2], "Righthalf of Screen", function() resize_win('halfright') end)
-end
-resizeextra_fullscreen_keys = resizeextra_fullscreen_keys or {{"cmd", "alt"}, "up"}
-if string.len(resizeextra_fullscreen_keys[2]) > 0 then
-    hs.hotkey.bind(resizeextra_fullscreen_keys[1], resizeextra_fullscreen_keys[2], "Fullscreen", function() resize_win('fullscreen') end)
-end
-resizeextra_fcenter_keys = resizeextra_fcenter_keys or {{"cmd", "alt"}, "down"}
-if string.len(resizeextra_fcenter_keys[2]) > 0 then
-    hs.hotkey.bind(resizeextra_fcenter_keys[1], resizeextra_fcenter_keys[2], "Resize & Center", function() resize_win('fcenter') end)
-end
-resizeextra_center_keys = resizeextra_center_keys or {{"cmd", "alt"}, "return"}
-if string.len(resizeextra_center_keys[2]) > 0 then
-    hs.hotkey.bind(resizeextra_center_keys[1], resizeextra_center_keys[2], "Center Window", function() resize_win('center') end)
-end
-
 if not module_list then
     module_list = {
         "basicmode",
-        "widgets/netspeed",
-        "widgets/hcalendar",
-        "widgets/analogclock",
-        "modes/indicator",
         "modes/clipshow",
-        "modes/hsearch",
     }
 end
 
@@ -233,6 +193,13 @@ for i=1,#module_list do
     require(module_list[i])
 end
 
+function exit_others(except)
+    for i = 1, #modal_list do
+        if modal_list[i] ~= except then
+            modal_list[i]:exit()
+        end
+    end
+end
 -- local weather = require("hs-weather")
 -- weather.start()
 
@@ -241,4 +208,11 @@ caff.start()
 
 if #modal_list > 0 then require("modalmgr") end
 
+hs.loadSpoon("SpoonInstall")
 hs.loadSpoon("HCalendar")
+hs.loadSpoon("AClock")
+spoon.AClock:toggleShowPersistent()
+spoon.SpoonInstall:andUse("DeepLTranslate")
+spoon.SpoonInstall:andUse("ArrangeDesktop")
+spoon.SpoonInstall:andUse("WinWin")
+spoon.SpoonInstall:andUse("ReloadConfiguration")

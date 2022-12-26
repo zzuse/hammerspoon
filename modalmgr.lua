@@ -7,14 +7,7 @@ function modalmgr:entered()
         if launch_resizeM == nil then launch_resizeM = false end
         if launch_resizeM == true then resizeM:enter() end
     end
-    if idle_to_which == nil then idle_to_which = "netspeed" end
-    if idle_to_which == "netspeed" then
-        idletimer = hs.timer.doEvery(5,function()
-            if modal_text == 'DOCK MODE' and netspeedM then
-                netspeedM:enter()
-            end
-        end)
-    elseif idle_to_which == "hide" then
+    if idle_to_which == "hide" then
         modal_show:hide()
         modal_bg:hide()
     end
@@ -47,40 +40,26 @@ if clipboardM then
         modalmgr:bind(clipboardM_keys[1], clipboardM_keys[2], 'Enter Clipboard Mode', function() exit_others(clipboardM) clipboardM:enter() end)
     end
 end
-if downloadM then
-    downloadM_keys = downloadM_keys or {"alt", "D"}
-    if string.len(downloadM_keys[2]) > 0 then
-        modalmgr:bind('alt', 'D', 'Enter Download Mode', function() exit_others(downloadM) downloadM:enter() end)
-    end
-end
-if hsearch_loaded == true then
-    hsearch_keys = hsearch_keys or {"alt", "G"}
-    if string.len(hsearch_keys[2]) > 0 then
-        modalmgr:bind(hsearch_keys[1], hsearch_keys[2], 'Launch Hammer Search', function() launchChooser() end)
-    end
-end
-if timerM then
-    timerM_keys = timerM_keys or {"alt", "I"}
-    if string.len(timerM_keys[2]) > 0 then
-        modalmgr:bind(timerM_keys[1], timerM_keys[2], 'Enter Timer Mode', function() exit_others(timerM) timerM:enter() end)
-    end
-end
+
 if resizeM then
     resizeM_keys = resizeM_keys or {"alt", "R"}
     if string.len(resizeM_keys[2]) > 0 then
         modalmgr:bind(resizeM_keys[1], resizeM_keys[2], 'Enter Resize Mode', function() exit_others(resizeM) resizeM:enter() end)
     end
 end
+
 if cheatsheetM then
     cheatsheetM_keys = cheatsheetM_keys or {"alt", "S"}
     if string.len(cheatsheetM_keys[2]) > 0 then
         modalmgr:bind(cheatsheetM_keys[1], cheatsheetM_keys[2], 'Enter Cheatsheet Mode', function() exit_others(cheatsheetM) cheatsheetM:enter() end)
     end
 end
+
 showtime_keys = showtime_keys or {"alt", "T"}
 if string.len(showtime_keys[2]) > 0 then
-    modalmgr:bind(showtime_keys[1], showtime_keys[2], 'Show Digital Clock', function() show_time() end)
+    modalmgr:bind(showtime_keys[1], showtime_keys[2], 'Show Digital Clock', function() spoon.AClock:toggleShowPersistent() end)
 end
+
 text_keys = text_keys or {{"ctrl","shift"}, "E"}
 if string.len(text_keys[2]) > 0 then
    modalmgr:bind(text_keys[1], text_keys[2], 'Send Text EXIT', function() SendExitTextRequest() end)
@@ -93,16 +72,24 @@ hidden_keys = hidden_keys or {{"ctrl","shift"}, "H"}
 if string.len(hidden_keys[2]) > 0 then
    modalmgr:bind(hidden_keys[1], hidden_keys[2], 'hidden desktop', function() HiddenDesktop() end)
 end
+
 if viewM then
     viewM_keys = viewM_keys or {"alt", "V"}
     if string.len(viewM_keys[2]) > 0 then
         modalmgr:bind(viewM_keys[1], viewM_keys[2], 'Enter View Mode', function() exit_others(viewM) viewM:enter() end)
     end
 end
+
 toggleconsole_keys = toggleconsole_keys or {"alt", "Z"}
 if string.len(toggleconsole_keys[2]) > 0 then
     modalmgr:bind(toggleconsole_keys[1], toggleconsole_keys[2], 'Toggle Hammerspoon Console', function() hs.toggleConsole() end)
 end
+
+reloadconfig_keys = reloadconfig_keys or {{"ctrl","shift","cmd"}, "R"}
+if string.len(reloadconfig_keys[2]) > 0 then
+    modalmgr:bind(reloadconfig_keys[1], reloadconfig_keys[2], 'Reload Hammerspoon Config', function() spoon.ReloadConfiguration:start() end)
+end
+
 winhints_keys = winhints_keys or {"alt", "tab"}
 if string.len(winhints_keys[2]) > 0 then
     modalmgr:bind(winhints_keys[1], winhints_keys[2], 'Show Windows Hint', function() exit_others(nil) hs.hints.windowHints() end)

@@ -1,7 +1,6 @@
 # Cloned from Awesome-hammerspoon, as advertised.
-# Just add private dir and modify some errors
-# ADDED caffeinate
-# ADDED weather from https://github.com/skamsie/hs-weather.git
+## Add private dir for personal use AppLaunchers and Model hotkeys
+## gethot key when enter each mode, more spoons, beautify...
 
 ![modes](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-modes.png)
 
@@ -10,7 +9,7 @@ Awesome-hammerspoon is my collection of lua scripts for [Hammerspoon](http://www
 ## Get started
 
 1. Install [Hammerspoon](http://www.hammerspoon.org/) first.
-2. `git clone --depth 1 https://github.com/ashfinal/awesome-hammerspoon.git ~/.hammerspoon`
+2. `git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon`
 3. Reload the configutation.
 
 and you're set.
@@ -19,6 +18,15 @@ and you're set.
 
 `cd ~/.hammerspoon && git pull`
 
+## I think init.lua is the main entry point
+    1. init.lua ==> private config ==> basicmode ==> modalmgr ==> loadSpoon
+    2. the modalmgr controls appMODE , clipboardMODE , cheatsheetMODE , resizeMODE, and viewMODE
+    3. if you enter viewMODE, you can using your HIJK to moving your mouse.
+    4. if you enter resizeMODE, you can using your Y/O/I/M/... to stretch your window.
+
+
+# Below is the original author's description, not my personal use.
+--------------------------
 ## What's modal-based key bindings?
 
 <details>
