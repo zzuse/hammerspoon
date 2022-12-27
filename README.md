@@ -1,10 +1,15 @@
-# Cloned from Awesome-hammerspoon, as advertised.
-## Add private dir for personal use AppLaunchers and Model hotkeys
-## gethot key when enter each mode, more spoons, beautify...
+# Cloned and then modified from Awesome-hammerspoon. It is very personal and may not suit your needs.
 
+## Add private dir for personal use Model hotkeys and AppLaunchers.
+## Show hot key when enter each mode 
+## More spoons
+## Caffeine
+## Beautify
+## remove personal not used functions
 ![modes](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-modes.png)
 
 Awesome-hammerspoon is my collection of lua scripts for [Hammerspoon](http://www.hammerspoon.org/). It has highly modal-based, vim-styled key bindings, provides some functionality like desktop widgets, window management, application launcher, dictionary translation, cheatsheets... etc.
+
 
 ## Get started
 
@@ -18,12 +23,86 @@ and you're set.
 
 `cd ~/.hammerspoon && git pull`
 
-## I think init.lua is the main entry point
-    1. init.lua ==> private config ==> basicmode ==> modalmgr ==> loadSpoon
-    2. the modalmgr controls appMODE , clipboardMODE , cheatsheetMODE , resizeMODE, and viewMODE
-    3. if you enter viewMODE, you can using your HIJK to moving your mouse.
-    4. if you enter resizeMODE, you can using your Y/O/I/M/... to stretch your window.
+## Details 
+#### `init.lua` is the main entry point
+1. init.lua ==> private config ==> basicmode ==> modalmgr ==> loadSpoon
+2. The modalmgr controls entering appMODE, clipboardMODE, cheatsheetMODE, resizeMODE, viewMODE, and showTime
 
+| Key bindings                | Movement                   |
+|-----------------------------|----------------------------|
+| <kbd>⌥</kbd> + <kbd>M</kbd> | Mode on/off                |
+| <kbd>⌥</kbd> + <kbd>A</kbd> | Enter `app` mode           |
+| <kbd>⌥</kbd> + <kbd>C</kbd> | Enter `clipboard` mode     |
+| <kbd>⌥</kbd> + <kbd>R</kbd> | Enter `resize` mode        |
+| <kbd>⌥</kbd> + <kbd>S</kbd> | Enter `cheatsheet` mode    |
+| <kbd>⌥</kbd> + <kbd>T</kbd> | Show current time          |
+| <kbd>⌥</kbd> + <kbd>V</kbd> | Enter `view` mode          |
+| <kbd>⌥</kbd> + <kbd>Z</kbd> | Toggle Hammerspoon console |
+| ctrl + alt + cmd + R        | spoon.ReloadConfiguration  |
+|     shift ctrl + E          | send EXIT to terminal      |
+|     shift ctrl + H          | hide desktop file          |
+| cmd shift ctrl + H          | show desktop file          |
+| ctrl + alt + cmd + D        | DeepL Translate            |
+| ctrl + alt + cmd + S        | pomodoro timer tart        |
+
+3. not need to speak app mode, it is straightforward, just launch APPs.
+4. if you enter viewMODE(ALT+V), you can using your H/I/J/K to scroll your mouse.
+
+| Key bindings                | Movement                   |
+|-----------------------------|----------------------------|
+| H                       | Scroll Leftward                |
+| L                       | Scroll Rightward               |
+| J                       | Scroll Downward                |
+| K                       | Scroll Upward                  |
+| ctrl , H                | Move Mouse Leftward by 50px    |
+| ctrl , L                | Move Mouse Rightward by 50px   |
+| ctrl , J                | Move Mouse Downward by 50px    |
+| ctrl , K                | Move Mouse Upward by 50px      |
+| shift', 'H',            | 'Move Mouse Leftward by 10px'  |
+| shift', 'L',            | 'Move Mouse Rightward by 10px  |
+| shift', 'K',            | 'Move Mouse Upward by 10px',   |
+| shift', 'J',            | 'Move Mouse Downward by 10px'  |
+| 'ctrl','shift', 'H',    | 'Move Mouse Leftward by 1px',  |
+| 'ctrl','shift', 'L',    | 'Move Mouse Rightward by 1px'  |
+| 'ctrl','shift', 'K',    | 'Move Mouse Upward by 1px', f  |
+| 'ctrl','shift', 'J',    | 'Move Mouse Downward by 1px',  |
+| ','                     | 'Left Mouse Click',            |
+| '.'                     | 'Right Mouse Click'            |
+| Q                       | EXIT                           |
+
+4. if you enter resizeMODE, you can using your Y/O/I/M/... to stretch your window.
+
+| Key bindings                | Movement                   |
+|-----------------------------|----------------------------|
+| 'shift', 'Y',               |'Shrink Leftward'           |
+| 'shift', 'O',               |'Stretch Rightward'         |
+| 'shift', 'M',               |'Stretch Downward'          |
+| 'shift', 'I',               |'Shrink Upward'             |
+|  'F',                       |'Fullscreen'                |
+|  'C',                       |'Center Window'             |
+| 'shift', 'C',               |'Resize & Center'           |
+|  'H',                       |'Lefthalf of Screen'        |
+|  'J',                       |'Downhalf of Screen'        |
+|  'K',                       |'Uphalf of Screen'          |
+|  'L',                       |'Righthalf of Screen'       |
+|  'Y',                       |'NorthWest Corner'          |
+|  'N',                       |'SouthWest Corner'          |
+|  'M',                       |'SouthEast Corner',         |
+|  'O',                       |'NorthEast Corner',         |
+|  '=',                       |'Stretch Outward',          |
+|  '-',                       |'Shrink Inward',            |
+| 'shift', 'H',               |'Move Leftward',            |
+| 'shift', 'L',               |'Move Rightward',           |
+| 'shift', 'J',               |'Move Downward',            |
+| 'shift', 'K',               |'Move Upward',              |
+| '[',                        |'Focus Westward',           |
+| ']',                        |'Focus Eastward',           |
+| 'up',                       |'Move to monitor above'     |
+| 'down',                     |'Move to monitor below'     |
+| 'right',                    |'Move to monitor right'     |
+| 'left',                     |'Move to monitor left',     |
+| 'space',                    |'Move to next monitor'      |
+| Q                           | EXIT                       |
 
 # Below is the original author's description, not my personal use.
 --------------------------

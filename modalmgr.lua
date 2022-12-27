@@ -64,7 +64,7 @@ text_keys = text_keys or {{"ctrl","shift"}, "E"}
 if string.len(text_keys[2]) > 0 then
    modalmgr:bind(text_keys[1], text_keys[2], 'Send Text EXIT', function() SendExitTextRequest() end)
 end
-nohidden_keys = nohidden_keys or {{"ctrl","shift"}, "N"}
+nohidden_keys = nohidden_keys or {{"cmd", "ctrl", "shift"}, "H"}
 if string.len(nohidden_keys[2]) > 0 then
    modalmgr:bind(nohidden_keys[1], nohidden_keys[2], 'no hidden desktop', function() NoHiddenDesktop() end)
 end
@@ -85,9 +85,19 @@ if string.len(toggleconsole_keys[2]) > 0 then
     modalmgr:bind(toggleconsole_keys[1], toggleconsole_keys[2], 'Toggle Hammerspoon Console', function() hs.toggleConsole() end)
 end
 
-reloadconfig_keys = reloadconfig_keys or {{"ctrl","shift","cmd"}, "R"}
+reloadconfig_keys = reloadconfig_keys or {{"ctrl","alt","cmd"}, "R"}
 if string.len(reloadconfig_keys[2]) > 0 then
     modalmgr:bind(reloadconfig_keys[1], reloadconfig_keys[2], 'Reload Hammerspoon Config', function() spoon.ReloadConfiguration:start() end)
+end
+
+translate_keys = translate_keys or {{"ctrl","alt","cmd"}, "D"}
+if string.len(translate_keys[2]) > 0 then
+    modalmgr:bind(translate_keys[1], translate_keys[2], 'DeepL Translate clipboard', function() spoon.DeepLTranslate:translateSelectionPopup() end)
+end
+
+pomodoro_menu = pomodoro_menu or {{"ctrl","alt","cmd"}, "S"}
+if string.len(pomodoro_menu[2]) > 0 then
+    modalmgr:bind(pomodoro_menu[1], pomodoro_menu[2], 'Pomodoro Timer Start', function() spoon.Cherry:start() end)
 end
 
 winhints_keys = winhints_keys or {"alt", "tab"}
