@@ -44,6 +44,9 @@ and you're set.
 | cmd shift ctrl + H          | show desktop file          |
 | ctrl + alt + cmd + D        | DeepL Translate            |
 | ctrl + alt + cmd + S        | pomodoro timer tart        |
+| <kbd>⌥</kbd> + <kbd>G</kbd> | window grid                |
+| <kbd>⌥</kbd> + <kbd>E</kbd> | Emojis                     |
+
 
 3. not need to speak app mode, it is straightforward, just launch APPs.
 4. if you enter viewMODE(ALT+V), you can using your H/I/J/K to scroll your mouse.

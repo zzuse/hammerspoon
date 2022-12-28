@@ -42,7 +42,7 @@ obj._attribs = {
   format = "%H:%M",
   textFont = "Impact",
   textSize = 50,
-  textColor = {hex="#d7d80e"},
+  textColor = {hex="#76d80e", alpha=0.3},
   width = 120,
   height = 90,
   showDuration = 4,  -- seconds
@@ -62,6 +62,8 @@ for k, v in pairs(obj._attribs) do obj[k] = v end
 ---  * The AClock object
 function obj:init()
   if not self.canvas then self.canvas = hs.canvas.new({x=0, y=0, w=0, h=0}) end
+  self.canvas:behavior(hs.canvas.windowBehaviors.canJoinAllSpaces)
+  -- self.canvas:level(hs.canvas.windowLevels.desktopIcon)
   self.canvas[1] = {
     type = "text",
     text = "",

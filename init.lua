@@ -215,3 +215,11 @@ spoon.AClock:toggleShowPersistent()
 spoon.SpoonInstall:andUse("DeepLTranslate")
 spoon.SpoonInstall:andUse("Cherry")
 spoon.SpoonInstall:andUse("ReloadConfiguration")
+spoon.SpoonInstall:andUse("WindowGrid", {
+    config = { gridGeometries = { { "10x3" } } },
+    hotkeys = { show_grid = {{"alt"}, "g"} },
+    start = true
+})
+spoon.SpoonInstall:andUse("Emojis", {
+    hotkeys = { toggle = {{"alt"}, "e"} }
+})
