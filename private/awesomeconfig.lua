@@ -6,6 +6,7 @@ applist = {
     {shortcut = 'e',appname = 'Evernote'},
     {shortcut = 'f',appname = 'FileZilla'},
     {shortcut = 'g',appname = 'Google Chrome'},
+    {shortcut = 'h',appname = 'Masquerade'},
     {shortcut = 'i',appname = 'iTerm'},
     {shortcut = 'k',appname = 'Klib'},
     {shortcut = 'm',appname = 'QQMusic'},
