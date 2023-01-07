@@ -38,12 +38,14 @@ and you're set.
 | <kbd>⌥</kbd> + <kbd>T</kbd> | Show current time          |
 | <kbd>⌥</kbd> + <kbd>V</kbd> | Enter `view` mode          |
 | <kbd>⌥</kbd> + <kbd>Z</kbd> | Toggle Hammerspoon console |
-| ctrl + alt + cmd + R        | spoon.ReloadConfiguration  |
+| ctrl + alt + cmd + C        | spoon.ReloadConfiguration  |
 |     shift ctrl + E          | send EXIT to terminal      |
 |     shift ctrl + H          | hide desktop file          |
 | cmd shift ctrl + H          | show desktop file          |
 | ctrl + alt + cmd + D        | DeepL Translate            |
 | ctrl + alt + cmd + S        | pomodoro timer tart        |
+| ctrl + alt + cmd + P        | pomodoro timer pause       |
+| ctrl + alt + cmd + R        | pomodoro timer resume      |
 | <kbd>⌥</kbd> + <kbd>G</kbd> | window grid                |
 | <kbd>⌥</kbd> + <kbd>E</kbd> | Emojis                     |
 

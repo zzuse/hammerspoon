@@ -74,7 +74,7 @@ function obj:reset()
     { title = "Start", fn = function() self:start() end }
   }
   self.menu:setMenu(items)
-  self.menu:setTitle("🍒")
+  self.menu:setTitle("🍎")
   self.timerRunning = false
   if not self.alwaysShow then
       self.menu:removeFromMenuBar()
@@ -85,7 +85,7 @@ end
 function obj:updateTimerString()
     local minutes = math.floor(self.timeLeft / 60)
     local seconds = self.timeLeft - (minutes * 60)
-    local timerString = string.format("%02d:%02d 🍒", minutes, seconds)
+    local timerString = string.format("%02d:%02d 🍎", minutes, seconds)
     self.menu:setTitle(timerString)
 end
 
@@ -101,7 +101,7 @@ end
 ---  * None
 function obj:popup()
   if 0 < self.alertDuration then
-    hs.alert.show("Done! 🍒", { textSize = self.alertTextSize }, self.alertDuration)
+    hs.alert.show("Done! 🍅🍎🍅", { textSize = self.alertTextSize }, self.alertDuration)
   end
   if self.notification then
     self.notification:send()

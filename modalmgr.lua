@@ -85,7 +85,7 @@ if string.len(toggleconsole_keys[2]) > 0 then
     modalmgr:bind(toggleconsole_keys[1], toggleconsole_keys[2], 'Toggle Hammerspoon Console', function() hs.toggleConsole() end)
 end
 
-reloadconfig_keys = reloadconfig_keys or {{"ctrl","alt","cmd"}, "R"}
+reloadconfig_keys = reloadconfig_keys or {{"ctrl","alt","cmd"}, "C"}
 if string.len(reloadconfig_keys[2]) > 0 then
     modalmgr:bind(reloadconfig_keys[1], reloadconfig_keys[2], 'Reload Hammerspoon Config', function() spoon.ReloadConfiguration:start() end)
 end
@@ -95,9 +95,17 @@ if string.len(translate_keys[2]) > 0 then
     modalmgr:bind(translate_keys[1], translate_keys[2], 'DeepL Translate clipboard', function() spoon.DeepLTranslate:translateSelectionPopup() end)
 end
 
-pomodoro_menu = pomodoro_menu or {{"ctrl","alt","cmd"}, "S"}
-if string.len(pomodoro_menu[2]) > 0 then
-    modalmgr:bind(pomodoro_menu[1], pomodoro_menu[2], 'Pomodoro Timer Start', function() spoon.Cherry:start() end)
+pomodoro_start = pomodoro_start or {{"ctrl","alt","cmd"}, "S"}
+if string.len(pomodoro_start[2]) > 0 then
+    modalmgr:bind(pomodoro_start[1], pomodoro_start[2], 'Pomodoro Timer Start', function() spoon.Cherry:start() end)
+end
+pomodoro_pause = pomodoro_pause or {{"ctrl","alt","cmd"}, "P"}
+if string.len(pomodoro_pause[2]) > 0 then
+    modalmgr:bind(pomodoro_pause[1], pomodoro_pause[2], 'Pomodoro Timer Pause', function() spoon.Cherry:pause() end)
+end
+pomodoro_resume = pomodoro_resume or {{"ctrl","alt","cmd"}, "R"}
+if string.len(pomodoro_resume[2]) > 0 then
+    modalmgr:bind(pomodoro_resume[1], pomodoro_resume[2], 'Pomodoro Timer Resume', function() spoon.Cherry:start(true) end)
 end
 
 winhints_keys = winhints_keys or {"alt", "tab"}
