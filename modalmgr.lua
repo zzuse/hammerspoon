@@ -107,8 +107,11 @@ pomodoro_resume = pomodoro_resume or {{"ctrl","alt","cmd"}, "R"}
 if string.len(pomodoro_resume[2]) > 0 then
     modalmgr:bind(pomodoro_resume[1], pomodoro_resume[2], 'Pomodoro Timer Resume', function() spoon.Cherry:start(true) end)
 end
-
-winhints_keys = winhints_keys or {"alt", "tab"}
+countdown = countdown or {{"ctrl","alt","cmd"}, "T"}
+if string.len(countdown[2]) > 0 then
+    modalmgr:bind(countdown[1], countdown[2], 'Timer Count down', function() spoon.CountDown:startFor(1) end)
+end
+winhints_keys = winhints_keys or {"alt", "i"}
 if string.len(winhints_keys[2]) > 0 then
     modalmgr:bind(winhints_keys[1], winhints_keys[2], 'Show Windows Hint', function() exit_others(nil) hs.hints.windowHints() end)
 end

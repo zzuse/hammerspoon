@@ -41,12 +41,12 @@ obj.logger = logger
 obj._attribs = {
   format = "%H:%M",
   textFont = "Impact",
-  textSize = 50,
+  textSize = 90,
   textColor = {hex="#76d80e", alpha=0.3},
-  width = 120,
+  width = 240,
   height = 90,
   showDuration = 4,  -- seconds
-  hotkey = 'escape',
+  hotkey = nil,
   hotkeyMods = {},
 }
 for k, v in pairs(obj._attribs) do obj[k] = v end

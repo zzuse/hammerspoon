@@ -31,7 +31,7 @@ if privateconf ~= nil then
     require('private/awesomeconfig')
 end
 
--- deprecated function show_time
+-- already deprecated function show_time
 function show_time()
     if not time_draw then
         local mainScreen = hs.screen.mainScreen()
@@ -211,6 +211,7 @@ if #modal_list > 0 then require("modalmgr") end
 hs.loadSpoon("SpoonInstall")
 hs.loadSpoon("HCalendar")
 hs.loadSpoon("AClock")
+hs.loadSpoon("CountDown")
 spoon.AClock:toggleShowPersistent()
 spoon.SpoonInstall:andUse("DeepLTranslate")
 spoon.SpoonInstall:andUse("Cherry")
