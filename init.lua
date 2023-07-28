@@ -31,22 +31,19 @@ if privateconf ~= nil then
     require('private/awesomeconfig')
 end
 
--- already deprecated function show_time
-function show_time()
-    if not time_draw then
-        local mainScreen = hs.screen.mainScreen()
-        local mainRes = mainScreen:fullFrame()
-        local time_str = hs.styledtext.new(os.date("%H:%M"),{font={name="Impact",size=120},color=darkblue,paragraphStyle={alignment="center"}})
-        local timeframe = hs.geometry.rect((mainRes.w-300)/2,(mainRes.h-200)/2,300,150)
-        time_draw = hs.drawing.text(timeframe,time_str)
-        time_draw:setLevel(hs.drawing.windowLevels.overlay)
-        time_draw:show()
-        ttimer = hs.timer.doAfter(4, function() time_draw:delete() time_draw=nil end)
+-- for debugging dump table
+function dump(o)
+    if type(o) == 'table' then
+       local s = '{ '
+       for k,v in pairs(o) do
+          if type(k) ~= 'number' then k = '"'..k..'"' end
+          s = s .. '['..k..'] = ' .. dump(v) .. ','
+       end
+       return s .. '} '
     else
-        time_draw:delete()
-        time_draw=nil
+       return tostring(o)
     end
-end
+ end
 
 -- TODO hotkey_filtered[i-1].idx length calculation is not beautiful
 function showavailableHotkey()
@@ -70,6 +67,16 @@ function showavailableHotkey()
         for i=1,#hotkey_list do
             if hotkey_list[i].idx ~= hotkey_list[i].msg then
                 table.insert(hotkey_filtered,hotkey_list[i])
+            else
+                -- sorry for hard coding this, cause moddalmgr can't handle SpoonInstall
+                if hotkey_list[i].idx == '⌥G' then
+                    hotkey_list[i].msg = hotkey_list[i].idx .. ': Window Grid'
+                    table.insert(hotkey_filtered, hotkey_list[i]) 
+                end
+                if hotkey_list[i].idx == '⌥E' then
+                    hotkey_list[i].msg = hotkey_list[i].idx .. ': Emoji Key'
+                    table.insert(hotkey_filtered, hotkey_list[i]) 
+                end
             end
         end
         local availablelen = 100
@@ -218,9 +225,9 @@ spoon.SpoonInstall:andUse("Cherry")
 spoon.SpoonInstall:andUse("ReloadConfiguration")
 spoon.SpoonInstall:andUse("WindowGrid", {
     config = { gridGeometries = { { "10x3" } } },
-    hotkeys = { show_grid = {{"alt"}, "g"} },
+    hotkeys = { show_grid = window_grid },
     start = true
 })
 spoon.SpoonInstall:andUse("Emojis", {
-    hotkeys = { toggle = {{"alt"}, "e"} }
+    hotkeys = { toggle = emoji_key }
 })

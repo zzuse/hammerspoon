@@ -2,11 +2,14 @@
 
 ## Add private dir for personal use Model hotkeys and AppLaunchers. 
 ## Show hot key when enter each mode  
-## More spoons 
 ## Caffeine 
-## Beautify 
-## remove personal not used functions 
-![modes](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-modes.png)
+## AppLauncher, Clipboard, Mouse control
+## showavailableHotkey and Cheatsheet, (you don't need to remember lots of keybindings, just call cheatsheet.)
+## resize(not useful cause I have yabai)
+## remove DownloadMode, and lots
+## modify AClock size and location and many
+## Plugins: AClock, CountDown, Emojis, WindowGrid, SpoonInstall, DeepLTranslate, Cherry, Reload Plugins
+## Custom commands
 
 Awesome-hammerspoon is my collection of lua scripts for [Hammerspoon](http://www.hammerspoon.org/). It has highly modal-based, vim-styled key bindings, provides some functionality like desktop widgets, window management, application launcher, dictionary translation, cheatsheets... etc.
 
@@ -25,7 +28,7 @@ and you're set.
 
 ## Details 
 #### `init.lua` is the main entry point
-1. init.lua ==> private config ==> basicmode ==> modalmgr ==> loadSpoon
+1. init.lua ==> private config (awesomeconfig.lua) ==> modalmgr(call basicmode.lua) ==> loadSpoon plugins  
 2. The modalmgr controls entering appMODE, clipboardMODE, cheatsheetMODE, resizeMODE, viewMODE, and showTime
 
 | Key bindings                | Movement                   |
@@ -37,7 +40,10 @@ and you're set.
 | <kbd>⌥</kbd> + <kbd>S</kbd> | Enter `cheatsheet` mode    |
 | <kbd>⌥</kbd> + <kbd>T</kbd> | Show current time          |
 | <kbd>⌥</kbd> + <kbd>V</kbd> | Enter `view` mode          |
+| <kbd>⌥</kbd> + <kbd>I</kbd> | Windows Hint               |
 | <kbd>⌥</kbd> + <kbd>Z</kbd> | Toggle Hammerspoon console |
+| <kbd>⌥</kbd> + <kbd>G</kbd> | Plugin Window grid         |
+| <kbd>⌥</kbd> + <kbd>E</kbd> | Plugin Emojis              |
 | ctrl + alt + cmd + C        | spoon.ReloadConfiguration  |
 |     shift ctrl + E          | send EXIT to terminal      |
 |     shift ctrl + H          | hide desktop file          |
@@ -46,8 +52,6 @@ and you're set.
 | ctrl + alt + cmd + S        | pomodoro timer tart        |
 | ctrl + alt + cmd + P        | pomodoro timer pause       |
 | ctrl + alt + cmd + R        | pomodoro timer resume      |
-| <kbd>⌥</kbd> + <kbd>G</kbd> | window grid                |
-| <kbd>⌥</kbd> + <kbd>E</kbd> | Emojis                     |
 
 
 3. not need to speak app mode, it is straightforward, just launch APPs.
@@ -75,7 +79,7 @@ and you're set.
 | '.'                     | 'Right Mouse Click'            |
 | Q                       | EXIT                           |
 
-4. if you enter resizeMODE, you can using your Y/O/I/M/... to stretch your window.
+5. if you enter resizeMODE, you can using your Y/O/I/M/... to stretch your window.
 
 | Key bindings                | Movement                   |
 |-----------------------------|----------------------------|
@@ -113,28 +117,6 @@ and you're set.
 --------------------------
 ## What's modal-based key bindings?
 
-<details>
-<summary>More details</summary>
-
-Well... simply to say, it allows you using <kbd>S</kbd> key to resize windows in `resize` mode, but in `app` mode, to launch Safari, in `timer` mode, to set a 10-mins timer... something like that. During all progress, you don't have to press extra keys.
-</p>
-
-And this means a lot.
-
-* It's scene-wise, you can use same key bindings to do different jobs in different scenes. You don't worry to run out of your hotkey bindings, and twist your fingers to press <kbd>⌘</kbd> + <kbd>⌃</kbd> + <kbd>⌥</kbd> + <kbd>⇧</kbd> + <kbd>C</kbd> in the end.
-
-* Less keystrokes, less memory pressure. You can press <kbd>⌥</kbd> + <kbd>A</kbd> to enter `app` mode, release, then press single key <kbd>S</kbd> to launch Safari, or <kbd>C</kbd> to lauch Chrome. Sounds good? You keep your pace, no rush.
-
-* Easy to extend, you can create your own modals if you like. For example, `Finder` mode, in which you press <kbd>T</kbd> to open Terminal here, press <kbd>S</kbd> to send files to predefined path, press <kbd>C</kbd> to upload images to cloud storage.
-
-**NOTICE:** After your work you'd better quit current mode back to normal. Or, you carefully pick your key bindings to avoid conflict with other hotkeys.
-
-</details>
-
-## How to use?
-
-So, following above procedures, you have reloaded Hammerspoon's configutation. Let's see what we've got here.
-
 ### 1. Desktop Widgets
 
 <details>
@@ -149,58 +131,7 @@ As you may have noticed, there are two clean, nice-looking desktop widgets, anal
 ![hcal](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-hcal.png)
 
 </details>
-
-### 2. Mode Block
-
-<details>
-<summary>More details</summary>
-
-There is also a small gray block in the bottom right corner, maybe displaying current netspeed. Well, it's actually **mode block**. Want to know in which mode you are? Give it a glance. When Hammerspoon starts, or there's no work to do, it shows `DOCK MODE` in black background. But alway displaying the black block is a little boring, so we use it for netspeed monitor if there's no activity for 5 secs.
-
-**Mode block** holds the entrance to other modes, you can use <kbd>⌥</kbd> + <kbd>space</kbd> to toggle its display. Then use <kbd>⌥</kbd> + <kbd>R</kbd> to enter `resize` mode, or use <kbd>⌥</kbd> + <kbd>A</kbd> to enter `app` mode... etc.
-
-Key bindings available:
-
-| Key bindings                | Movement                   |
-|-----------------------------|----------------------------|
-| <kbd>⌥</kbd> + <kbd>A</kbd> | Enter `app` mode           |
-| <kbd>⌥</kbd> + <kbd>C</kbd> | Enter `clipboard` mode     |
-| <kbd>⌥</kbd> + <kbd>D</kbd> | Enter `download` mode      |
-| <kbd>⌥</kbd> + <kbd>G</kbd> | Launch hammer search       |
-| <kbd>⌥</kbd> + <kbd>I</kbd> | Enter `timer` mode         |
-| <kbd>⌥</kbd> + <kbd>R</kbd> | Enter `resize` mode        |
-| <kbd>⌥</kbd> + <kbd>S</kbd> | Enter `cheatsheet` mode    |
-| <kbd>⌥</kbd> + <kbd>T</kbd> | Show current time          |
-| <kbd>⌥</kbd> + <kbd>v</kbd> | Enter `view` mode          |
-| <kbd>⌥</kbd> + <kbd>Z</kbd> | Toggle Hammerspoon console |
-| <kbd>⌥</kbd> + <kbd>⇥</kbd> | Show window hints          |
-
-*In most modes, you can use <kbd>Q</kbd>, or <kbd>⎋</kbd> to quit back to DOCK mode. And switch from one mode to another directly.*
-
-</details>
-
-### 3. Window Management(resize mode) <kbd>⌥</kbd> + <kbd>R</kbd>
-
-<details>
-<summary>More details</summary>
-
-![winresize](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-winresize.gif)
-
-Use <kbd>[/]</kbd> to cycle through active windows.
-
-Use <kbd>H/J/K/L</kbd> to resize windows to 1/2 of screen.
-
-Use <kbd>Y/U/I/O</kbd> to resize windows to 1/4 of screen.
-
-Use <kbd>⇧</kbd> + <kbd>H/J/K/L</kbd> to **move** windows around.
-
-Use <kbd>⇧</kbd> + <kbd>Y/U/I/O</kbd> to **resize** windows.
-
-Use <kbd>=</kbd>, <kbd>-</kbd> to expand/shrink the window size.
-
-Use <kbd>F</kbd> to put windows to fullscreen, use <kbd>C</kbd> to put windows to center of screen, use <kbd>⇧</kbd> + <kbd>C</kbd> to resize windows to predefined size and center them.
-
-</details>
+...
 
 
 ## Thanks to
