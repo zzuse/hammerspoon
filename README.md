@@ -52,6 +52,7 @@ and you're set.
 | ctrl + alt + cmd + S        | pomodoro timer tart        |
 | ctrl + alt + cmd + P        | pomodoro timer pause       |
 | ctrl + alt + cmd + R        | pomodoro timer resume      |
+| ctrl + alt + cmd + T        | Count down timer           |
 
 
 3. not need to speak app mode, it is straightforward, just launch APPs.
