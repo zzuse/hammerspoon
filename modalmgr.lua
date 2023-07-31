@@ -110,7 +110,7 @@ end
 
 countdown = countdown or {{"ctrl","alt","cmd"}, "T"}
 if string.len(countdown[2]) > 0 then
-    modalmgr:bind(countdown[1], countdown[2], 'Timer Count down', function() spoon.CountDown:startFor(1) end)
+    modalmgr:bind(countdown[1], countdown[2], 'Timer Count down', function() spoon.CountDownNumber:startFor(1) end)
 end
 
 winhints_keys = winhints_keys or {"alt", "i"}
