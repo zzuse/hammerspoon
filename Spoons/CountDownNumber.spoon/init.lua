@@ -22,7 +22,6 @@ obj.logger = logger
 
 -- Defaults
 obj._attribs = {
-    format = "%H:%M",
     textFont = "Impact",
     textSize = 90,
     textColor = {hex="#76d80e", alpha=0.3},
@@ -32,6 +31,7 @@ obj._attribs = {
     hotkey = nil,
     hotkeyMods = {},
 }
+for k, v in pairs(obj._attribs) do obj[k] = v end
 
 function obj:init()
     self.logger.i('init')
@@ -48,9 +48,11 @@ function obj:init()
     }
     local mainScreen = hs.screen.primaryScreen()
     local mainRes = mainScreen:fullFrame()
+    local frameWidth = mainRes.w
+    local frameHeight = mainRes.h
     self.canvas:frame({
-        x = 40,
-        y = 20,
+        x = (frameWidth / 2) - self.width / 2,
+        y = (frameHeight / 2) - self.height / 2,
         w = self.width,
         h = self.height,
     })
@@ -71,7 +73,7 @@ local function canvasCleanup()
         obj.timer:stop()
         obj.timer = nil
     end
-    obj.canvas.hide()
+    obj.canvas:hide()
 end
 
 function obj:startFor(minutes)
@@ -79,6 +81,7 @@ function obj:startFor(minutes)
     if obj.timer then
         canvasCleanup()
     else
+        self.canvas:show()
         local secCount = math.ceil(60*minutes)
         obj.loopCount = 0
         obj.number = secCount
