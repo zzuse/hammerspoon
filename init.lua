@@ -218,7 +218,7 @@ if #modal_list > 0 then require("modalmgr") end
 hs.loadSpoon("SpoonInstall")
 hs.loadSpoon("HCalendar")
 hs.loadSpoon("AClock")
-hs.loadSpoon("CountDown")
+-- hs.loadSpoon("CountDown")
 hs.loadSpoon("CountDownNumber")
 spoon.AClock:toggleShowPersistent()
 spoon.SpoonInstall:andUse("DeepLTranslate")
