@@ -1,15 +1,14 @@
 # Cloned and then modified from Awesome-hammerspoon. It is very personal and may not suit your needs. 
 
 ## Add private dir for personal use Model hotkeys and AppLaunchers. 
-## Show hot key when enter each mode  
-## Caffeine 
-## AppLauncher, Clipboard, Mouse control
-## showavailableHotkey and Cheatsheet, (you don't need to remember lots of keybindings, just call cheatsheet.)
-## resize(not useful cause I have yabai)
-## remove DownloadMode, and lots
+### Caffeine 
+### AppLauncher, Clipboard, Mouse control key
+### showavailableHotkey and Cheatsheet, (you don't need to remember lots of keybindings, just call cheatsheet.)
+### window resize and window grid (not useful cause I have yabai)
 ## modify AClock size and location and many
-## Plugins: AClock, CountDown, Emojis, WindowGrid, SpoonInstall, DeepLTranslate, Cherry, Reload Plugins
-## Custom commands
+## create CountDownNumber plugin to display countdown number, complete alert sound
+### Plugins: AClock, CountDownNumber, Emojis, WindowGrid, SpoonInstall, DeepLTranslate, Cherry, Reload Plugins
+### Custom commands hotkey
 
 Awesome-hammerspoon is my collection of lua scripts for [Hammerspoon](http://www.hammerspoon.org/). It has highly modal-based, vim-styled key bindings, provides some functionality like desktop widgets, window management, application launcher, dictionary translation, cheatsheets... etc.
 
@@ -38,7 +37,7 @@ and you're set.
 | <kbd>⌥</kbd> + <kbd>C</kbd> | Enter `clipboard` mode     |
 | <kbd>⌥</kbd> + <kbd>R</kbd> | Enter `resize` mode        |
 | <kbd>⌥</kbd> + <kbd>S</kbd> | Enter `cheatsheet` mode    |
-| <kbd>⌥</kbd> + <kbd>T</kbd> | Show current time          |
+| <kbd>⌥</kbd> + <kbd>T</kbd> | Count down number          |
 | <kbd>⌥</kbd> + <kbd>V</kbd> | Enter `view` mode          |
 | <kbd>⌥</kbd> + <kbd>I</kbd> | Windows Hint               |
 | <kbd>⌥</kbd> + <kbd>Z</kbd> | Toggle Hammerspoon console |
@@ -52,7 +51,7 @@ and you're set.
 | ctrl + alt + cmd + S        | pomodoro timer tart        |
 | ctrl + alt + cmd + P        | pomodoro timer pause       |
 | ctrl + alt + cmd + R        | pomodoro timer resume      |
-| ctrl + alt + cmd + T        | Count down timer           |
+| ctrl + alt + cmd + T        | toggle current time        |
 
 
 3. not need to speak app mode, it is straightforward, just launch APPs.

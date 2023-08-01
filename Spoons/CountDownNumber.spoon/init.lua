@@ -84,10 +84,11 @@ end
 function obj:startFor(minutes)
     self.logger.i('startFor')
 
-    self.canvas:show()
     local secCount = math.ceil(60*minutes)
     obj.loopCount = 0
     obj.number = secCount
+    self.canvas[1].text = tostring(obj.number)
+    self.canvas:show()
     obj.timer = hs.timer.doEvery(1, function()
         obj.loopCount = obj.loopCount+1/secCount
         obj.number = obj.number - 1
@@ -119,6 +120,8 @@ end
 ---
 --- Parameters:
 ---  * progress - an number specifying the value of progress (0.0 - 1.0)
+---  * notifystr- an str of competion alert
+---  * number - an number specifying the value of countdown (integer)
 
 function obj:setProgress(progress, notifystr, number)
     --- self.logger.i("setProgress")
