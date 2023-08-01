@@ -8,79 +8,101 @@
     "Function": [],
     "Method": [
       {
-        "def": "CountDown:pauseOrResume()",
-        "desc": "Pause or resume the existing countdown.",
-        "doc": "Pause or resume the existing countdown.\n",
-        "name": "pauseOrResume",
-        "signature": "CountDown:pauseOrResume()",
+        "def": "CountDownNumber:start()",
+        "desc": "A Chooser for choose Countdown minutes.",
+        "doc": "A Chooser for choose Countdown minutes.\n",
+        "name": "start",
+        "signature": "CountDownNumber:start()",
         "stripped_doc": "",
         "type": "Method"
       },
       {
-        "def": "CountDown:setProgress(progress)",
+        "def": "CountDownNumber:pauseOrResume()",
+        "desc": "Pause or resume the existing countdown.",
+        "doc": "Pause or resume the existing countdown.\n",
+        "name": "pauseOrResume",
+        "signature": "CountDownNumber:pauseOrResume()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "CountDownNumber:setProgress(progress)",
         "desc": "Set the progress of visual indicator to `progress`.",
         "doc": "Set the progress of visual indicator to `progress`.\n\nParameters:\n * progress - an number specifying the value of progress (0.0 - 1.0)",
         "name": "setProgress",
         "parameters": [
-          " * progress - an number specifying the value of progress (0.0 - 1.0)"
+          " * progress - an number specifying the value of progress (0.0 - 1.0)",
+          " * notifystr- an str of competion alert",
+          " * number - an number specifying the value of countdown (integer)"
         ],
-        "signature": "CountDown:setProgress(progress)",
+        "signature": "CountDownNumber:setProgress(progress, notifystr, number)",
         "stripped_doc": "",
         "type": "Method"
       },
       {
-        "def": "CountDown:startFor(minutes)",
+        "def": "CountDownNumber:startFor(minutes)",
         "desc": "Start a countdown for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.",
         "doc": "Start a countdown for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.\n\nParameters:\n * minutes - How many minutes",
         "name": "startFor",
         "parameters": [
           " * minutes - How many minutes"
         ],
-        "signature": "CountDown:startFor(minutes)",
+        "signature": "CountDownNumber:startFor(minutes)",
         "stripped_doc": "",
         "type": "Method"
       }
     ],
     "Variable": [],
-    "desc": "Tiny countdown with visual indicator",
-    "doc": "Tiny countdown with visual indicator\n\nDownload: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/CountDown.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/CountDown.spoon.zip)",
+    "desc": "Tiny countdown number with visual indicator",
+    "doc": "Tiny countdown number with visual indicator\n\nDownload:[zzuse](https://github.com/zzuse/hammerspoon/tree/master/Spoons/CountDownNumber.spoon)",
     "items": [
       {
-        "def": "CountDown:pauseOrResume()",
-        "desc": "Pause or resume the existing countdown.",
-        "doc": "Pause or resume the existing countdown.\n",
-        "name": "pauseOrResume",
-        "signature": "CountDown:pauseOrResume()",
+        "def": "CountDownNumber:start()",
+        "desc": "A Chooser for choose Countdown minutes.",
+        "doc": "A Chooser for choose Countdown minutes.\n",
+        "name": "start",
+        "signature": "CountDownNumber:start()",
         "stripped_doc": "",
         "type": "Method"
       },
       {
-        "def": "CountDown:setProgress(progress)",
+        "def": "CountDownNumber:pauseOrResume()",
+        "desc": "Pause or resume the existing countdown.",
+        "doc": "Pause or resume the existing countdown.\n",
+        "name": "pauseOrResume",
+        "signature": "CountDownNumber:pauseOrResume()",
+        "stripped_doc": "",
+        "type": "Method"
+      },
+      {
+        "def": "CountDownNumber:setProgress(progress)",
         "desc": "Set the progress of visual indicator to `progress`.",
         "doc": "Set the progress of visual indicator to `progress`.\n\nParameters:\n * progress - an number specifying the value of progress (0.0 - 1.0)",
         "name": "setProgress",
         "parameters": [
-          " * progress - an number specifying the value of progress (0.0 - 1.0)"
+          " * progress - an number specifying the value of progress (0.0 - 1.0)",
+          " * notifystr- an str of competion alert",
+          " * number - an number specifying the value of countdown (integer)"
         ],
-        "signature": "CountDown:setProgress(progress)",
+        "signature": "CountDownNumber:setProgress(progress)",
         "stripped_doc": "",
         "type": "Method"
       },
       {
-        "def": "CountDown:startFor(minutes)",
+        "def": "CountDownNumber:startFor(minutes)",
         "desc": "Start a countdown for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.",
         "doc": "Start a countdown for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.\n\nParameters:\n * minutes - How many minutes",
         "name": "startFor",
         "parameters": [
           " * minutes - How many minutes"
         ],
-        "signature": "CountDown:startFor(minutes)",
+        "signature": "CountDownNumber:startFor(minutes)",
         "stripped_doc": "",
         "type": "Method"
       }
     ],
-    "name": "CountDown",
-    "stripped_doc": "\nDownload: [https://github.com/Hammerspoon/Spoons/raw/master/Spoons/CountDown.spoon.zip](https://github.com/Hammerspoon/Spoons/raw/master/Spoons/CountDown.spoon.zip)",
+    "name": "CountDownNumber",
+    "stripped_doc": "\nDownload: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/CountDownNumber.spoon](https://github.com/zzuse/hammerspoon/tree/master/Spoons/CountDownNumber.spoon)",
     "submodules": [],
     "type": "Module"
   }

@@ -62,7 +62,12 @@ end
 
 countdown = countdown or {"alt", "T"}
 if string.len(countdown[2]) > 0 then
-    modalmgr:bind(countdown[1], countdown[2], 'Timer Count down', function() spoon.CountDownNumber:start() end)
+    modalmgr:bind(countdown[1], countdown[2], 'Timer Countdown Number', function() spoon.CountDownNumber:start() end)
+end
+
+countdown_pause = countdown_pause or {"alt", "P"}
+if string.len(countdown_pause[2]) > 0 then
+    modalmgr:bind(countdown_pause[1], countdown_pause[2], 'Timer Countdown Number Pause', function() spoon.CountDownNumber:pauseOrResume() end)
 end
 
 text_keys = text_keys or {{"ctrl","shift"}, "E"}

@@ -1,4 +1,4 @@
---- === CountDown ===
+--- === CountDownNumber ===
 ---
 --- Tiny countdown number with visual indicator
 ---
@@ -74,9 +74,9 @@ local function canvasCleanup()
     obj.canvas:hide()
 end
 
---- CountDown:startFor(minutes)
+--- CountDownNumber:startFor(minutes)
 --- Method
---- Start a countdown for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.
+--- Start a CountDownNumber for `minutes` minutes immediately. Calling this method again will kill the existing countdown instance.
 ---
 --- Parameters:
 ---  * minutes - How many minutes
@@ -98,7 +98,7 @@ function obj:startFor(minutes)
     return self
 end
 
---- CountDown:pauseOrResume()
+--- CountDownNumber:pauseOrResume()
 --- Method
 --- Pause or resume the existing countdown.
 ---
@@ -114,7 +114,7 @@ function obj:pauseOrResume()
     end
 end
 
---- CountDown:setProgress(progress)
+--- CountDownNumber:setProgress(progress)
 --- Method
 --- Set the progress of visual indicator to `progress`.
 ---
