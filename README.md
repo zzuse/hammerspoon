@@ -1,4 +1,4 @@
-# Cloned and then modified from Awesome-hammerspoon. It is very personal and may not suit your needs. 
+# Modified or borrowed from Awesome-hammerspoon. It is very personal and may not suit your needs. 
 
 ## Intro 
 ```
@@ -138,16 +138,11 @@ and you're set.
 
 --------------------------
 
-# Below is the original author's description, not my personal use.
 
-## What's modal-based key bindings?
-
-### 1. Desktop Widgets
+#### 7. Desktop Widgets
 
 <details>
 <summary>More details</summary>
-
-As you may have noticed, there are two clean, nice-looking desktop widgets, analogclock and calendar. Usually we don't interact with them, but I do hope you like them.
 
 **UPDATE:** Add new widget `hcalendar` and make it default module. The design comes from [here](https://github.com/ashikahmad/horizontal-calendar-widget).
 
