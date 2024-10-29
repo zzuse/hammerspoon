@@ -123,6 +123,16 @@ if string.len(winhints_keys[2]) > 0 then
     modalmgr:bind(winhints_keys[1], winhints_keys[2], 'Show Windows Hint', function() exit_others(nil) hs.hints.windowHints() end)
 end
 
+move_space1 = move_space1 or {{"shift","alt"}, "3"}
+if string.len(move_space1[2]) > 0 then
+    modalmgr:bind(move_space1[1], move_space1[2], 'Move window to right Space', function() moveWindowOneSpace("right", true) end)
+end
+
+move_space2 = move_space2 or {{"shift","alt"}, "1"}
+if string.len(move_space2[2]) > 0 then
+    modalmgr:bind(move_space2[1], move_space2[2], 'Move window to left Space1', function() moveWindowOneSpace("left", true) end)
+end
+
 if modalmgr then
     if launch_modalmgr == nil then launch_modalmgr = true end
     if launch_modalmgr == true then modalmgr:enter() end
