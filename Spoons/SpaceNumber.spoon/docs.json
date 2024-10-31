@@ -89,10 +89,10 @@
         ],
         "Variable": [],
         "desc": "Show current space number in the top right corner",
-        "doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/your-username/SpaceNumber.spoon](.)",
+        "doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon](.)",
         "items": [],
         "name": "SpaceNumber",
-        "stripped_doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/your-username/SpaceNumber.spoon](.)",
+        "stripped_doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon](.)",
         "submodules": [],
         "type": "Module"
     }

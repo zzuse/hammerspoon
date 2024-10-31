@@ -2,7 +2,7 @@
 ---
 --- Show current space number in the top right corner
 ---
---- Download: [https://github.com/zzuse/SpaceNumber.spoon](.)
+--- Download: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon](.)
 
 local obj = {}
 obj.__index = obj
@@ -11,7 +11,7 @@ obj.__index = obj
 obj.name = "SpaceNumber"
 obj.version = "1.0"
 obj.author = "zzuse"
-obj.homepage = "https://github.com/zzuse/hammerspoon"
+obj.homepage = "https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon"
 obj.license = "MIT - https://opensource.org/licenses/MIT"
 
 -- Internal variables

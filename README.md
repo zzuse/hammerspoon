@@ -230,6 +230,7 @@ and you're set.
 | <kbd>⇧⌥ </kbd> + <kbd>1</kbd> | move window to one left space|
 | <kbd>⇧⌥ </kbd> + <kbd>3</kbd> | move window to one right space|
 
+#### 9. Added SpaceNumber.spoon to show space number on every space
 ...
 
 
