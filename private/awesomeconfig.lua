@@ -26,6 +26,7 @@ module_list = {
     "basicmode",
     "modes/clipshow",
     "modes/cheatsheet",
+    "modes/windowspace",
 }
 modalmgr_keys = {{"alt"}, "M"}
 resizeM_keys = {{"alt"}, "R"}
