@@ -125,12 +125,12 @@ end
 
 move_space1 = move_space1 or {{"shift","alt"}, "3"}
 if string.len(move_space1[2]) > 0 then
-    modalmgr:bind(move_space1[1], move_space1[2], 'Move window to right Space', function() winspaceM:right() end)
+    modalmgr:bind(move_space1[1], move_space1[2], 'Move window to right Space', function() winspaceM:right() exit_others(nil) end)
 end
 
 move_space2 = move_space2 or {{"shift","alt"}, "1"}
 if string.len(move_space2[2]) > 0 then
-    modalmgr:bind(move_space2[1], move_space2[2], 'Move window to left Space1', function() winspaceM:left() end)
+    modalmgr:bind(move_space2[1], move_space2[2], 'Move window to left Space1', function() winspaceM:left() exit_others(nil) end)
 end
 
 if modalmgr then

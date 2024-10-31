@@ -210,9 +210,6 @@ end
 local caff = require("modes.caffeinator")
 caff.start()
 
--- local winspace = require("modes.windowspace")
--- winspace.start()
-
 if #modal_list > 0 then require("modalmgr") end
 
 hs.loadSpoon("SpoonInstall")
@@ -220,7 +217,9 @@ hs.loadSpoon("HCalendar")
 hs.loadSpoon("AClock")
 -- hs.loadSpoon("CountDown")
 hs.loadSpoon("CountDownNumber")
+hs.loadSpoon("SpaceNumber")
 spoon.AClock:toggleShowPersistent()
+spoon.SpaceNumber:toggleShow()
 spoon.SpoonInstall:andUse("DeepLTranslate")
 spoon.SpoonInstall:andUse("Cherry")
 spoon.SpoonInstall:andUse("ReloadConfiguration")

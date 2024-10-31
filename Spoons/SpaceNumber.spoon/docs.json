@@ -1,0 +1,99 @@
+[
+    {
+        "Command": [],
+        "Constant": [],
+        "Constructor": [],
+        "Deprecated": [],
+        "Field": [
+            {
+                "def": "SpaceNumber.name",
+                "desc": "The name of the Spoon",
+                "name": "name",
+                "type": "string",
+                "notes": []
+            },
+            {
+                "def": "SpaceNumber.version",
+                "desc": "The version of the Spoon",
+                "name": "version",
+                "type": "string",
+                "notes": []
+            },
+            {
+                "def": "SpaceNumber.author",
+                "desc": "The author of the Spoon",
+                "name": "author",
+                "type": "string",
+                "notes": []
+            },
+            {
+                "def": "SpaceNumber.license",
+                "desc": "The license of the Spoon",
+                "name": "license",
+                "type": "string",
+                "notes": []
+            },
+            {
+                "def": "SpaceNumber.showing",
+                "desc": "Whether the space number is currently being displayed",
+                "name": "showing",
+                "type": "boolean",
+                "notes": []
+            }
+        ],
+        "Function": [],
+        "Method": [
+            {
+                "def": "SpaceNumber:init()",
+                "desc": "Initialize the spoon",
+                "name": "init",
+                "parameters": [],
+                "returns": [
+                    {
+                        "type": "SpaceNumber",
+                        "desc": "The SpaceNumber object"
+                    }
+                ],
+                "notes": [
+                    "Creates the canvas and sets up initial properties"
+                ]
+            },
+            {
+                "def": "SpaceNumber:toggleShow()",
+                "desc": "Toggle the display of the space number",
+                "name": "toggleShow",
+                "parameters": [],
+                "returns": [
+                    {
+                        "type": "SpaceNumber",
+                        "desc": "The SpaceNumber object"
+                    }
+                ],
+                "notes": [
+                    "Shows or hides the space number display",
+                    "When showing, starts watchers for space and screen changes",
+                    "When hiding, stops all watchers"
+                ]
+            },
+            {
+                "def": "SpaceNumber:updateDisplay()",
+                "desc": "Update the displayed space number",
+                "name": "updateDisplay",
+                "parameters": [],
+                "returns": [],
+                "notes": [
+                    "Updates the position and content of the space number display",
+                    "Called automatically when spaces change"
+                ]
+            }
+        ],
+        "Variable": [],
+        "desc": "Show current space number in the top right corner",
+        "doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/your-username/SpaceNumber.spoon](.)",
+        "items": [],
+        "name": "SpaceNumber",
+        "stripped_doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/your-username/SpaceNumber.spoon](.)",
+        "submodules": [],
+        "type": "Module"
+    }
+]

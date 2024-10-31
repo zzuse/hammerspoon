@@ -1,4 +1,6 @@
 # Modified or borrowed from Awesome-hammerspoon. It is very personal and may not suit your needs. 
+# Hammerspoon Modal Manager
+A modal-based window management tool built on Hammerspoon, inspired by Vim's modal system.
 
 ## Intro 
 ```
@@ -6,13 +8,86 @@ My collection of lua scripts for [Hammerspoon](http://www.hammerspoon.org/). It 
 Add private dir for personal use Model hotkeys mapping and AppLaunchers. 
 ```
 
+## Core Concepts
+
+### Modal System
+- Similar to Vim's modal system
+- Each modal represents a specific set of functionalities (window management, app switching, etc.)
+- Users can switch between different modes via hotkeys
+
+### Modal Manager
+```lua
+modalmgr = hs.hotkey.modal.new(modalmgr_keys[1], modalmgr_keys[2], 'Toggle Modal Supervisor')
+```
+- Acts as the top-level controller
+- Manages entry/exit of all other modals
+- Default activation: `Alt + Space`
+
+### Feature Modules
+```
+modes/
+├── appM.lua -- Application management
+├── clipboardM.lua -- Clipboard management
+├── resizeM.lua -- Window resizing
+├── viewM.lua -- View management
+└── windowspace.lua -- Move Window to Space management
+```
+
+## Code Flow
+
+### Initialization Flow
+1. `init.lua` loads all modules
+2. Initializes modal manager
+3. Registers hotkeys for each module
+4. Starts default modal
+
+### Modal Switching Flow
+1. User presses `Alt + M` to enter modal manager, default key can be changed based on the private/awesomeconfig.lua
+2. From modal manager, can choose:
+   - `Alt + A` → Application Mode
+   - `Alt + R` → Resize Mode
+   - `Alt + V` → View Mode
+   - `Escape` → Exit Modal
+### UI Feedback System
+- `modal_stat()` - Shows current modal status
+- `modal_bg` - Background display
+- `modal_show` - Status display
+- `hotkeytext` - Hotkey hints
+
+### Configuration System
+- All hotkeys are customizable
+- Hotkey configurations stored in variables with `_keys` suffix
+- Examples: `modalmgr_keys`, `appM_keys`, `resizeM_keys`
+
+### Usage Example
+1. Start Hammerspoon
+2. Press `Alt + M` to enter modal manager
+3. Choose from:
+   - `Alt + A` → Application switching mode
+   - `Alt + R` → Window resize mode
+   - `Alt + V` → View management mode
+   - And more...
+4. Use corresponding hotkeys in each mode
+5. Press `Escape` or `Q` to exit current mode
+
+## Architecture Benefits
+
+The framework is highly modular, with each functionality encapsulated in independent modals and managed uniformly through the modal manager. This design makes feature extension and maintenance relatively easy.
+
+## Contributing
+
+Feel free to submit issues and enhancement requests!
+
+### Key Functions
+
 ## Plugins and Widgets
 ```
 caffeinator  -- Prevent computer fall asleep, controlled by bar icon.
 AppLauncher -- custom launcher
 AClock -- custom transparent green Digital Clock show on top left of every space.
+SpaceNumber -- custom transparent green Space Number show on top right of every space.
 Cheatsheet -- showavailableHotkey (you don't need to remember lots of keybindings, just call cheatsheet.)
-CountDownNumber -- custom plugin to display countdown number, complete alert sound, with a chooser
+CountDownNumber -- custom plugin to display countdown number, complete with an alert sound, with a chooser
 Window Resize -- using keys to control window size
 SpoonInstall -- thirdparty Plugin manager
 WindowGrid -- thirdparty window manager plugin
@@ -23,19 +98,18 @@ Reload Plugins-- thirdparty reload plugin
 Custom commands -- send 'exit' hotkey; hide desktop hotkey; show desktop hotkey
 Clipboard -- show clipboard content
 Mouse control key -- move mouse through keyboard
+windowspace -- move window to lefe/right space integrated from https://github.com/Hammerspoon/hammerspoon/issues/3636#issuecomment-2384239506
 ```
-
 
 ## Get started
 
 1. Install [Hammerspoon](http://www.hammerspoon.org/) first.
-2. `git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon`
+2. Clone my configuration `git clone https://github.com/zzuse/hammerspoon.git ~/.hammerspoon`
 3. Reload the configutation.
 
 and you're set.
 
 ## Keep update
-
 `cd ~/.hammerspoon && git pull`
 
 ## Details 
@@ -144,7 +218,7 @@ and you're set.
 <details>
 <summary>More details</summary>
 
-**UPDATE:** Add new widget `hcalendar` and make it default module. The design comes from [here](https://github.com/ashikahmad/horizontal-calendar-widget).
+**UPDATE:** Add new widget `hcalendar` and make it default module. The design borrowed from [here](https://github.com/ashikahmad/horizontal-calendar-widget).
 
 ![hcal](https://github.com/ashfinal/bindata/raw/master/screenshots/awesome-hammerspoon-hcal.png)
 
@@ -176,6 +250,7 @@ and you're set.
 
 [sample-configurations](https://github.com/Hammerspoon/hammerspoon/wiki/Sample-Configurations)
 
+[github move spaces Issues](https://github.com/Hammerspoon/hammerspoon/issues/3636#issuecomment-2384239506)
 </details>
 
 ## Welcome to
