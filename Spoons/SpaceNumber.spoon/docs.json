@@ -34,10 +34,17 @@
                 "notes": []
             },
             {
-                "def": "SpaceNumber.showing",
-                "desc": "Whether the space number is currently being displayed",
-                "name": "showing",
-                "type": "boolean",
+                "def": "SpaceNumber.canvas",
+                "desc": "The canvas object used to display the space number",
+                "name": "canvas",
+                "type": "hs.canvas",
+                "notes": []
+            },
+            {
+                "def": "SpaceNumber.watcher",
+                "desc": "The space watcher object",
+                "name": "watcher",
+                "type": "hs.spaces.watcher",
                 "notes": []
             }
         ],
@@ -45,7 +52,7 @@
         "Method": [
             {
                 "def": "SpaceNumber:init()",
-                "desc": "Initialize the spoon",
+                "desc": "Initialize the SpaceNumber spoon",
                 "name": "init",
                 "parameters": [],
                 "returns": [
@@ -55,24 +62,7 @@
                     }
                 ],
                 "notes": [
-                    "Creates the canvas and sets up initial properties"
-                ]
-            },
-            {
-                "def": "SpaceNumber:toggleShow()",
-                "desc": "Toggle the display of the space number",
-                "name": "toggleShow",
-                "parameters": [],
-                "returns": [
-                    {
-                        "type": "SpaceNumber",
-                        "desc": "The SpaceNumber object"
-                    }
-                ],
-                "notes": [
-                    "Shows or hides the space number display",
-                    "When showing, starts watchers for space and screen changes",
-                    "When hiding, stops all watchers"
+                    "Creates and configures the canvas for displaying the space number"
                 ]
             },
             {
@@ -82,17 +72,31 @@
                 "parameters": [],
                 "returns": [],
                 "notes": [
-                    "Updates the position and content of the space number display",
-                    "Called automatically when spaces change"
+                    "Gets the current space number and updates the display"
+                ]
+            },
+            {
+                "def": "SpaceNumber:toggleShow()",
+                "desc": "Toggle visibility of the space number display",
+                "name": "toggleShow",
+                "parameters": [],
+                "returns": [
+                    {
+                        "type": "SpaceNumber",
+                        "desc": "The SpaceNumber object"
+                    }
+                ],
+                "notes": [
+                    "Shows/hides the space number and starts/stops the watcher"
                 ]
             }
         ],
         "Variable": [],
         "desc": "Show current space number in the top right corner",
-        "doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon](.)",
+        "doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/SpaceNumber.spoon/raw/master/Spoons/SpaceNumber.spoon.zip](https://github.com/zzuse/SpaceNumber.spoon/raw/master/Spoons/SpaceNumber.spoon.zip)",
         "items": [],
         "name": "SpaceNumber",
-        "stripped_doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/hammerspoon/tree/master/Spoons/SpaceNumber.spoon](.)",
+        "stripped_doc": "Show current space number in the top right corner\n\nDownload: [https://github.com/zzuse/SpaceNumber.spoon/raw/master/Spoons/SpaceNumber.spoon.zip](https://github.com/zzuse/SpaceNumber.spoon/raw/master/Spoons/SpaceNumber.spoon.zip)",
         "submodules": [],
         "type": "Module"
     }
