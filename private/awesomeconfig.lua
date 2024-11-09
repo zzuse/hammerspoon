@@ -12,8 +12,8 @@ applist = {
     {shortcut = 'l',appname = 'Goland'},
     {shortcut = 'm',appname = 'QQMusic'},
     {shortcut = 'n',appname = 'Notion'},
-    {shortcut = 'o',appname = 'Microsoft Outlook'},
-    {shortcut = 'p',appname = 'PyCharm'},
+    {shortcut = 'o',appname = 'Cursor'},
+    {shortcut = 'p',appname = 'Pages'},
     {shortcut = 'q',appname = 'QQ'},
     {shortcut = 'r',appname = 'CodeRunner'},
     {shortcut = 's',appname = 'Safari'},
@@ -21,6 +21,7 @@ applist = {
     {shortcut = 'v',appname = 'Visual Studio Code'},
     {shortcut = 'w',appname = 'WeChat'},
     {shortcut = 'x',appname = 'Xcode'},
+    {shortcut = 'y',appname = 'Skype'},
 }
 module_list = {
     "basicmode",
