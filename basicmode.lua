@@ -182,7 +182,7 @@ if not applist then
         {shortcut = 's',appname = 'Safari'},
         {shortcut = 't',appname = 'Terminal'},
         {shortcut = 'v',appname = 'Activity Monitor'},
-        {shortcut = 'y',appname = 'System Preferences'},
+        {shortcut = 'y',appname = 'System Settings'},
     }
 end
 
