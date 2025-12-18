@@ -9,9 +9,9 @@ applist = {
     {shortcut = 'h',appname = 'Masquerade'},
     {shortcut = 'i',appname = 'iTerm'},
     {shortcut = 'k',appname = 'Kindle cn'},
-    {shortcut = 'l',appname = 'Goland'},
-    {shortcut = 'm',appname = 'QQMusic'},
-    {shortcut = 'n',appname = 'Notion'},
+    {shortcut = 'l',appname = 'Logic Pro'},
+    {shortcut = 'm',appname = 'Music'},
+    {shortcut = 'n',appname = 'Notes'},
     {shortcut = 'o',appname = 'Cursor'},
     {shortcut = 'p',appname = 'Pages'},
     {shortcut = 'q',appname = 'QQ'},
@@ -21,7 +21,7 @@ applist = {
     {shortcut = 'v',appname = 'Visual Studio Code'},
     {shortcut = 'w',appname = 'WeChat'},
     {shortcut = 'x',appname = 'Xcode'},
-    {shortcut = 'y',appname = 'Skype'},
+    {shortcut = 'y',appname = 'Slack'},
 }
 module_list = {
     "basicmode",
