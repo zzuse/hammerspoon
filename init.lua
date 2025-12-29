@@ -187,6 +187,53 @@ function NoHiddenDesktop()
     local stat, data= hs.osascript.applescript('on run {}\n tell application "Finder"\n activate\n do shell script "chflags nohidden ~/Desktop/*"\n end tell\n return input\n end run\n')
 end
 
+-- Simple HTTP alert server for SafeFamily
+server = hs.httpserver.new()
+server:setPort(9181)
+
+local function centerAlert(message)
+  local screen = hs.screen.mainScreen()
+  local frame = screen:frame()
+  hs.alert.closeAll(0)
+  hs.alert.show(
+    message,
+    {
+    --   atScreenEdge = 2, -- center
+      strokeWidth = 8,
+      strokeColor = { white = 1, alpha = 0.9 },
+      fillColor = { red = 0.1, green = 0.12, blue = 0.15, alpha = 0.92 },
+      textColor = { white = 1, alpha = 1 },
+      textSize = 80,
+      radius = 12,
+      fadeInDuration = 0.12,
+      fadeOutDuration = 0.2
+    },
+    screen,
+    4
+  )
+end
+
+server:setCallback(function(method, path, headers, body)
+  if method ~= "POST" then
+    return "Only POST allowed", 405, { ["Content-Type"] = "text/plain" }
+  end
+
+  if path == "/alert" then
+    local msg = "Task feedback needed"
+    if body and #body > 0 then
+      local ok, decoded = pcall(hs.json.decode, body)
+      if ok and decoded and decoded.message then
+        msg = decoded.message
+      end
+    end
+    centerAlert(msg)
+    return "OK", 200, { ["Content-Type"] = "text/plain" }
+  end
+
+  return "Not found", 404, { ["Content-Type"] = "text/plain" }
+end)
+
+server:start()
 
 if not module_list then
     module_list = {
