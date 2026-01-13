@@ -204,44 +204,40 @@ local function updateTaskInfoDisplay(data)
     local screen = hs.screen.mainScreen()
     local frame = screen:frame()
     
-    local w, h = 300, 120
+    local w, h = 600, 250
     local x = frame.x + frame.w - w - 20
     local y = frame.y + frame.h - h - 20
 
     taskInfoCanvas = hs.canvas.new({x = x, y = y, w = w, h = h})
     -- Level overlay to sit above normal windows
     taskInfoCanvas:level(hs.canvas.windowLevels.overlay)
+    taskInfoCanvas:behavior(hs.canvas.windowBehaviors.canJoinAllSpaces + hs.canvas.windowBehaviors.stationary)
     
     taskInfoCanvas:appendElements({
         {
-            type = "rectangle",
-            action = "fill",
-            fillColor = { red = 0.15, green = 0.15, blue = 0.15, alpha = 0.9 },
-            roundedRectRadii = { xRadius = 10, yRadius = 10 },
-            strokeColor = { white = 1, alpha = 0.5 },
-            strokeWidth = 2,
-        },
-        {
             type = "text",
             text = "Doer: " .. (data.doer or "N/A"),
-            textSize = 18,
-            textColor = { white = 1 },
-            frame = { x = 15, y = 10, w = w-30, h = 30 }
+            textSize = 55,
+            textColor = { hex = "#76d80e", alpha = 0.3 },
+            textFont = "Impact",
+            frame = { x = 0, y = 0, w = w, h = 70 }
         },
         {
             type = "text",
             text = "Task: " .. (data.task_name or "N/A"),
-            textSize = 16,
-            textColor = { white = 0.9 },
-            frame = { x = 15, y = 40, w = w-30, h = 60 },
+            textSize = 55,
+            textColor = { hex = "#76d80e", alpha = 0.3 },
+            textFont = "Impact",
+            frame = { x = 0, y = 70, w = w, h = 90 },
             lineBreak = "truncateTail"
         },
         {
             type = "text",
             text = "Time: " .. (data.time_slot or "N/A"),
-            textSize = 14,
-            textColor = { white = 0.8 },
-            frame = { x = 15, y = 85, w = w-30, h = 25 }
+            textSize = 55,
+            textColor = { hex = "#76d80e", alpha = 0.3 },
+            textFont = "Impact",
+            frame = { x = 0, y = 160, w = w, h = 70 }
         }
     })
     taskInfoCanvas:show()
@@ -269,6 +265,7 @@ local function centerAlert(message)
   )
 end
 
+-- curl -X POST -H "Content-Type: application/json" -d '{"doer": "Me", "task_name": "Testing Task Display", "time_slot": "Now"}' http://localhost:9181/task
 server:setCallback(function(method, path, headers, body)
   if method ~= "POST" then
     return "Only POST allowed", 405, { ["Content-Type"] = "text/plain" }
