@@ -187,10 +187,6 @@ function NoHiddenDesktop()
     local stat, data= hs.osascript.applescript('on run {}\n tell application "Finder"\n activate\n do shell script "chflags nohidden ~/Desktop/*"\n end tell\n return input\n end run\n')
 end
 
--- InfoServer Spoon
-hs.loadSpoon("InfoServer")
-spoon.InfoServer:start()
-
 if not module_list then
     module_list = {
         "basicmode",
@@ -233,4 +229,10 @@ spoon.SpoonInstall:andUse("WindowGrid", {
 })
 spoon.SpoonInstall:andUse("Emojis", {
     hotkeys = { toggle = emoji_key }
+})
+
+-- InfoServer Spoon
+spoon.SpoonInstall:andUse("InfoServer", { 
+    repo = "InfoServer",
+    start = true 
 })
