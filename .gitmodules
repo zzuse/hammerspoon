@@ -1,0 +1,3 @@
+[submodule "Spoons/InfoServer.spoon"]
+	path = Spoons/InfoServer.spoon
+	url = https://github.com/zzuse/InfoServer.spoon.git
