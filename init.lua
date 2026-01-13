@@ -191,6 +191,62 @@ end
 server = hs.httpserver.new()
 server:setPort(9181)
 
+-- Task Info Canvas
+local taskInfoCanvas = nil
+local function updateTaskInfoDisplay(data)
+    if taskInfoCanvas then
+        taskInfoCanvas:delete()
+        taskInfoCanvas = nil
+    end
+
+    if not data then return end
+
+    local screen = hs.screen.mainScreen()
+    local frame = screen:frame()
+    
+    local w, h = 300, 120
+    local x = frame.x + frame.w - w - 20
+    local y = frame.y + frame.h - h - 20
+
+    taskInfoCanvas = hs.canvas.new({x = x, y = y, w = w, h = h})
+    -- Level overlay to sit above normal windows
+    taskInfoCanvas:level(hs.canvas.windowLevels.overlay)
+    
+    taskInfoCanvas:appendElements({
+        {
+            type = "rectangle",
+            action = "fill",
+            fillColor = { red = 0.15, green = 0.15, blue = 0.15, alpha = 0.9 },
+            roundedRectRadii = { xRadius = 10, yRadius = 10 },
+            strokeColor = { white = 1, alpha = 0.5 },
+            strokeWidth = 2,
+        },
+        {
+            type = "text",
+            text = "Doer: " .. (data.doer or "N/A"),
+            textSize = 18,
+            textColor = { white = 1 },
+            frame = { x = 15, y = 10, w = w-30, h = 30 }
+        },
+        {
+            type = "text",
+            text = "Task: " .. (data.task_name or "N/A"),
+            textSize = 16,
+            textColor = { white = 0.9 },
+            frame = { x = 15, y = 40, w = w-30, h = 60 },
+            lineBreak = "truncateTail"
+        },
+        {
+            type = "text",
+            text = "Time: " .. (data.time_slot or "N/A"),
+            textSize = 14,
+            textColor = { white = 0.8 },
+            frame = { x = 15, y = 85, w = w-30, h = 25 }
+        }
+    })
+    taskInfoCanvas:show()
+end
+
 local function centerAlert(message)
   local screen = hs.screen.mainScreen()
   local frame = screen:frame()
@@ -218,16 +274,21 @@ server:setCallback(function(method, path, headers, body)
     return "Only POST allowed", 405, { ["Content-Type"] = "text/plain" }
   end
 
+  local ok, decoded = pcall(hs.json.decode, body)
+  if not ok then decoded = {} end
+
   if path == "/alert" then
     local msg = "Task feedback needed"
-    if body and #body > 0 then
-      local ok, decoded = pcall(hs.json.decode, body)
-      if ok and decoded and decoded.message then
+    if decoded.message then
         msg = decoded.message
-      end
     end
     centerAlert(msg)
     return "OK", 200, { ["Content-Type"] = "text/plain" }
+  
+  -- Handle task info. Either specific path or duck typing the payload
+  elseif path == "/task" or (decoded.doer and decoded.task_name) then
+      updateTaskInfoDisplay(decoded)
+      return "OK", 200, { ["Content-Type"] = "application/json" }
   end
 
   return "Not found", 404, { ["Content-Type"] = "text/plain" }
