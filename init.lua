@@ -264,7 +264,6 @@ spoon.AClock:toggleShowPersistent()
 spoon.SpaceNumber:toggleShow()
 spoon.SpoonInstall:andUse("DeepLTranslate")
 spoon.SpoonInstall:andUse("Cherry")
-spoon.SpoonInstall:andUse("ReloadConfiguration")
 spoon.SpoonInstall:andUse("WindowGrid", {
     config = { gridGeometries = { { "10x3" } } },
     hotkeys = { show_grid = window_grid },

@@ -95,11 +95,6 @@ if string.len(toggleconsole_keys[2]) > 0 then
     modalmgr:bind(toggleconsole_keys[1], toggleconsole_keys[2], 'Toggle Hammerspoon Console', function() hs.toggleConsole() end)
 end
 
-reloadconfig_keys = reloadconfig_keys or {{"ctrl","alt","cmd"}, "C"}
-if string.len(reloadconfig_keys[2]) > 0 then
-    modalmgr:bind(reloadconfig_keys[1], reloadconfig_keys[2], 'Reload Hammerspoon Config', function() spoon.ReloadConfiguration:start() end)
-end
-
 translate_keys = translate_keys or {{"ctrl","alt","cmd"}, "D"}
 if string.len(translate_keys[2]) > 0 then
     modalmgr:bind(translate_keys[1], translate_keys[2], 'DeepL Translate clipboard', function() spoon.DeepLTranslate:translateSelectionPopup() end)
