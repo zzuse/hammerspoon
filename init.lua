@@ -51,7 +51,7 @@ function showavailableHotkey()
         local hotkey_list=hs.hotkey.getHotkeys()
         local mainScreen = hs.screen.mainScreen()
         local mainRes = mainScreen:fullFrame()
-        local hkbgrect = hs.geometry.rect(mainRes.w/5,mainRes.h/5,mainRes.w/5*3,mainRes.h/5*3)
+        local hkbgrect = hs.geometry.rect(mainRes.x+mainRes.w/5,mainRes.y+mainRes.h/5,mainRes.w/5*3,mainRes.h/5*3)
         hotkeybg = hs.drawing.rectangle(hkbgrect)
         -- hotkeybg:setStroke(false)
         hotkeybg:setFillColor({red=0,blue=0,green=0,alpha=0.5})
@@ -129,15 +129,47 @@ function modal_stat(modal, color)
     modal_show:setText(modal_text)
 end
 
+local yabai_bin = "/opt/homebrew/bin/yabai"
+
+-- nil when yabai is not running, or not installed
+local function yabai_display_index(screen)
+    local output, ok = hs.execute(yabai_bin .. " -m query --displays 2>/dev/null")
+    if not ok then return nil end
+    for _, display in ipairs(hs.json.decode(output) or {}) do
+        if display.uuid == screen:getUUID() then return display.index end
+    end
+end
+
 function move_win(direction)
     local win = hs.window.focusedWindow()
+    if not win then
+        hs.alert.show("No focused window!")
+        return
+    end
+    if win:isFullScreen() then
+        hs.alert.show("Exit fullscreen to move this window")
+        return
+    end
     local screen = win:screen()
-    if win then
-        if direction == 'up' then win:moveOneScreenNorth() end
-        if direction == 'down' then win:moveOneScreenSouth() end
-        if direction == 'left' then win:moveOneScreenWest() end
-        if direction == 'right' then win:moveOneScreenEast() end
-        if direction == 'next' then win:moveToScreen(screen:next()) end
+    local target = nil
+    if direction == 'up' then target = screen:toNorth() end
+    if direction == 'down' then target = screen:toSouth() end
+    if direction == 'left' then target = screen:toWest() end
+    if direction == 'right' then target = screen:toEast() end
+    if direction == 'next' then target = screen:next() end
+    if target and target ~= screen then
+        -- yabai pulls tiled windows back after an outside move, so it has to move
+        -- them itself. It leaves floating windows in place, so those fall through.
+        local index = yabai_display_index(target)
+        if index then
+            hs.execute(string.format("%s -m window %d --display %d --focus 2>/dev/null", yabai_bin, win:id(), index))
+        end
+        if win:screen() == screen then
+            -- scales with the display, so a left half stays a left half
+            win:moveToScreen(target, false, true)
+        end
+    else
+        hs.alert.show("No monitor to move to!")
     end
 end
 
@@ -146,23 +178,26 @@ function resize_win(direction)
     if win then
         local f = win:frame()
         local screen = win:screen()
-        local max = screen:fullFrame()
+        -- frame() excludes the menu bar and Dock. Its x/y are absolute, and are
+        -- only 0 on the primary display, so every position must be offset by them.
+        local max = screen:frame()
+        local center = f.center
         local stepw = max.w/30
         local steph = max.h/30
         if direction == "right" then f.w = f.w+stepw end
         if direction == "left" then f.w = f.w-stepw end
         if direction == "up" then f.h = f.h-steph end
         if direction == "down" then f.h = f.h+steph end
-        if direction == "halfright" then f.x = max.w/2 f.y = 0 f.w = max.w/2 f.h = max.h end
-        if direction == "halfleft" then f.x = 0 f.y = 0 f.w = max.w/2 f.h = max.h end
-        if direction == "halfup" then f.x = 0 f.y = 0 f.w = max.w f.h = max.h/2 end
-        if direction == "halfdown" then f.x = 0 f.y = max.h/2 f.w = max.w f.h = max.h/2 end
-        if direction == "cornerNE" then f.x = max.w/2 f.y = 0 f.w = max.w/2 f.h = max.h/2 end
-        if direction == "cornerSE" then f.x = max.w/2 f.y = max.h/2 f.w = max.w/2 f.h = max.h/2 end
-        if direction == "cornerNW" then f.x = 0 f.y = 0 f.w = max.w/2 f.h = max.h/2 end
-        if direction == "cornerSW" then f.x = 0 f.y = max.h/2 f.w = max.w/2 f.h = max.h/2 end
-        if direction == "center" then f.x = (max.w-f.w)/2 f.y = (max.h-f.h)/2 end
-        if direction == "fcenter" then f.x = stepw*5 f.y = steph*5 f.w = stepw*20 f.h = steph*20 end
+        if direction == "halfright" then f.x = max.x+max.w/2 f.y = max.y f.w = max.w/2 f.h = max.h end
+        if direction == "halfleft" then f.x = max.x f.y = max.y f.w = max.w/2 f.h = max.h end
+        if direction == "halfup" then f.x = max.x f.y = max.y f.w = max.w f.h = max.h/2 end
+        if direction == "halfdown" then f.x = max.x f.y = max.y+max.h/2 f.w = max.w f.h = max.h/2 end
+        if direction == "cornerNE" then f.x = max.x+max.w/2 f.y = max.y f.w = max.w/2 f.h = max.h/2 end
+        if direction == "cornerSE" then f.x = max.x+max.w/2 f.y = max.y+max.h/2 f.w = max.w/2 f.h = max.h/2 end
+        if direction == "cornerNW" then f.x = max.x f.y = max.y f.w = max.w/2 f.h = max.h/2 end
+        if direction == "cornerSW" then f.x = max.x f.y = max.y+max.h/2 f.w = max.w/2 f.h = max.h/2 end
+        if direction == "center" then f.x = max.x+(max.w-f.w)/2 f.y = max.y+(max.h-f.h)/2 end
+        if direction == "fcenter" then f.x = max.x+stepw*5 f.y = max.y+steph*5 f.w = stepw*20 f.h = steph*20 end
         if direction == "fullscreen" then f = max end
         if direction == "shrink" then f.x = f.x+stepw f.y = f.y+steph f.w = f.w-(stepw*2) f.h = f.h-(steph*2) end
         if direction == "expand" then f.x = f.x-stepw f.y = f.y-steph f.w = f.w+(stepw*2) f.h = f.h+(steph*2) end
@@ -170,7 +205,15 @@ function resize_win(direction)
         if direction == "mleft" then f.x = f.x-stepw end
         if direction == "mup" then f.y = f.y-steph end
         if direction == "mdown" then f.y = f.y+steph end
+        -- growing stops at the display edge instead of spilling onto the next one
+        if direction == "right" or direction == "down" or direction == "expand" then f = f:intersect(max) end
         win:setFrame(f)
+        -- apps enforce a minimum size; recenter so shrinking at it doesn't walk the window away
+        if direction == "shrink" then
+            local actual = win:frame()
+            actual.center = center
+            win:setFrame(actual)
+        end
     else
         hs.alert.show("No focused window!")
     end

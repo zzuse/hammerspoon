@@ -126,6 +126,7 @@ You can customize these in your private configuration. see `private/awesomeconfi
 | `Ctrl+Alt+Cmd + R` | Resume Pomodoro timer |
 | `Ctrl+Alt+Cmd + C` | Reload Hammerspoon configuration |
 | `Shift+Alt + 1` | Move window to left space |
+| `Shift+Alt + 2` | Move window to next monitor |
 | `Shift+Alt + 3` | Move window to right space |
 
 ## Customization

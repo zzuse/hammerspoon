@@ -133,6 +133,11 @@ if string.len(move_space2[2]) > 0 then
     modalmgr:bind(move_space2[1], move_space2[2], 'Move window to left Space1', function() winspaceM:left() exit_others(nil) end)
 end
 
+move_display = move_display or {{"shift","alt"}, "2"}
+if string.len(move_display[2]) > 0 then
+    modalmgr:bind(move_display[1], move_display[2], 'Move window to next Display', function() move_win('next') end)
+end
+
 if modalmgr then
     if launch_modalmgr == nil then launch_modalmgr = true end
     if launch_modalmgr == true then modalmgr:enter() end

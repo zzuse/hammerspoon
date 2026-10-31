@@ -70,7 +70,8 @@ table.insert(modal_list, resizeM)
 function resizeM:entered()
     modal_stat('resize',firebrick)
     resize_current_winnum = 1
-    resize_win_list = hs.window.visibleWindows()
+    -- front to back, so index 1 is the window that is focused now
+    resize_win_list = hs.window.orderedWindows()
     if hotkeytext then
         hotkeytext:delete()
         hotkeytext=nil
@@ -129,17 +130,15 @@ resizeM:bind('', 'right', 'Move to monitor right', function() move_win('right') 
 resizeM:bind('', 'left', 'Move to monitor left', function() move_win('left') end, nil, nil)
 resizeM:bind('', 'space', 'Move to next monitor', function() move_win('next') end, nil, nil)
 
-function cycle_wins_next()
+function cycle_wins(step)
+    if #resize_win_list == 0 then return end
+    resize_current_winnum = (resize_current_winnum - 1 + step) % #resize_win_list + 1
     resize_win_list[resize_current_winnum]:focus()
-    resize_current_winnum = resize_current_winnum + 1
-    if resize_current_winnum > #resize_win_list then resize_current_winnum = 1 end
 end
 
-function cycle_wins_pre()
-    resize_win_list[resize_current_winnum]:focus()
-    resize_current_winnum = resize_current_winnum - 1
-    if resize_current_winnum < 1 then resize_current_winnum = #resize_win_list end
-end
+function cycle_wins_next() cycle_wins(1) end
+
+function cycle_wins_pre() cycle_wins(-1) end
 
 appM = hs.hotkey.modal.new()
 table.insert(modal_list, appM)
